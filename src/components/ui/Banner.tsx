@@ -2,7 +2,7 @@ import Carousel from "./Carousel";
 import Container from "./Container";
 
 const Banner = async () => {
-  const res = await fetch("http://localhost:5000/clothes");
+  const res = await fetch("http://localhost:5000/men-clothing");
   const products = await res.json();
 
   return (
@@ -11,7 +11,7 @@ const Banner = async () => {
         <div>
           <div className="flex justify-center items-center w-full">
             <div>
-              <h1 className="text-xl space-x-6 md:text-2xl lg:text-5xl font-semibold text-white text-center ">
+              <h1 className=" space-x-6 text-2xl lg:text-5xl font-semibold text-white text-center ">
                 ZStore Where Style Meets Substance, <br /> Your Ultimate Fashion
                 Destination
               </h1>
