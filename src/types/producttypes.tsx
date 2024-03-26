@@ -1,4 +1,5 @@
 export interface TProduct {
+  _id: string;
   product_name: string;
   category: string;
   product_image: string;

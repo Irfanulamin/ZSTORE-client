@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Container from "./ui/Container";
 import { useState } from "react";
+import { IoIosArrowForward } from "react-icons/io";
 // import { button } from "@nextui-org/react";
 
 const Categories = () => {
@@ -121,9 +122,12 @@ const Categories = () => {
         <div className="text-center py-6">
           <button
             onClick={() => setShowAll((prev) => !prev)}
-            className="bg-black px-4 py-2 tetx-base text-white rounded-full"
+            className=" bg-black px-4 py-2 text-base text-white rounded-full"
           >
-            {showAll ? "Show Less" : "View All"}
+            <div className="flex items-center gap-1">
+              {showAll ? "Show Less" : "View All"}
+              <IoIosArrowForward />
+            </div>
           </button>
         </div>
       </Container>

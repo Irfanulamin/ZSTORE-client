@@ -14,7 +14,13 @@ import {
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const menuItems = ["Categories", "Products", "Flashsale", "About", "Conatct"];
+  const menuItems = [
+    "Categories",
+    "Men-Clothing",
+    "Flash-Sale",
+    "About-Us",
+    "Conatct-Us",
+  ];
 
   return (
     <div className="absolute w-full">
@@ -41,10 +47,10 @@ const Navbar = () => {
               <Link href="#categories">Categories</Link>
             </NavbarItem>
             <NavbarItem>
-              <Link href="/products">Products</Link>
+              <Link href="/men-clothing">Products</Link>
             </NavbarItem>
             <NavbarItem>
-              <Link href="/flashsale">Flash Sale</Link>
+              <Link href="/flash-sale">Flash Sale</Link>
             </NavbarItem>
             <NavbarItem>
               <Link href="/about">About us</Link>
