@@ -2,7 +2,7 @@ import Carousel from "./Carousel";
 import Container from "./Container";
 
 const Banner = async () => {
-  const res = await fetch("http://localhost:5000/men-clothing");
+  const res = await fetch("http://zstore-server.vercel.app/men-clothing");
   const products = await res.json();
 
   return (

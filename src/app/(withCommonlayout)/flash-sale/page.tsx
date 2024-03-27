@@ -4,7 +4,7 @@ import ProductCard from "@/components/ui/ProductCard";
 import { TProduct } from "@/types/producttypes";
 
 const FlashSalePage = async () => {
-  const res = await fetch("http://localhost:5000/flash-sale");
+  const res = await fetch("http://zstore-server.vercel.app/flash-sale");
   const products = await res.json();
   return (
     <div className="pt-24 min-h-[90vh] h-full">

@@ -4,7 +4,7 @@ import Container from "./ui/Container";
 import ProductCard from "./ui/ProductCard";
 
 const MostPopular = async () => {
-  const res = await fetch("http://localhost:5000/trending-products", {
+  const res = await fetch("http://zstore-server.vercel.app/trending-products", {
     next: {
       revalidate: 30,
     },

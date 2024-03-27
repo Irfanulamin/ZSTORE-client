@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
-import { TSearchParam } from "@/app/men-clothing/page";
+
+import { TSearchParam } from "@/app/(withCommonlayout)/men-clothing/page";
 import ProductCard from "../components/ui/ProductCard";
 
 import { TProduct } from "../types/producttypes";
@@ -12,7 +13,7 @@ const FetchedProducts = async ({
   const { category, minAmount, maxAmount, rating } = searchParams;
 
   const res = await fetch(
-    `http://localhost:5000/men-clothing?${
+    `http://zstore-server.vercel.app/men-clothing?${
       category ? `category=${category}&` : ``
     }${
       minAmount && maxAmount

@@ -8,7 +8,9 @@ import "@smastrom/react-rating/style.css";
 import { TProduct } from "@/types/producttypes";
 
 const singleProductPage = async ({ params }: { params: { id: string } }) => {
-  const res = await fetch(`http://localhost:5000/men-clothing/${params.id}`);
+  const res = await fetch(
+    `http://zstore-server.vercel.app/men-clothing/${params.id}`
+  );
   const product = await res.json();
 
   return (
@@ -97,7 +99,7 @@ const singleProductPage = async ({ params }: { params: { id: string } }) => {
 };
 
 export async function generateStaticParams() {
-  const res = await fetch(`http://localhost:5000/men-clothing`);
+  const res = await fetch(`http://zstore-server.vercel.app/men-clothing`);
   const products = await res.json();
 
   return products.slice(0, 10).map((product: TProduct) => {

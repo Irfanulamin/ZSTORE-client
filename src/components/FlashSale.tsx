@@ -4,7 +4,7 @@ import Container from "./ui/Container";
 import ProductCard from "./ui/ProductCard";
 
 const FlashSale = async () => {
-  const res = await fetch("http://localhost:5000/flash-sale", {
+  const res = await fetch("http://zstore-server.vercel.app/flash-sale", {
     next: {
       revalidate: 30,
     },

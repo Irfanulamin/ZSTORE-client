@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 
 const AllProductsDashboard = async () => {
-  const res = await fetch("http://localhost:5000/men-clothing");
+  const res = await fetch("http://zstore-server.vercel.app/men-clothing");
   const products = await res.json();
 
   return (
