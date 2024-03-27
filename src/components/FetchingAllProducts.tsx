@@ -10,7 +10,6 @@ const FetchedProducts = async ({
   searchParams: TSearchParam;
 }) => {
   const { category, minAmount, maxAmount, rating } = searchParams;
-  console.log(category, minAmount, maxAmount, rating);
 
   const res = await fetch(
     `http://localhost:5000/men-clothing?${

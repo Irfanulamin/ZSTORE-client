@@ -4,7 +4,6 @@ import "./globals.css";
 import { Providers } from "@/lib/Provider";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
-import ReduxProvider from "@/lib/ReduxProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,14 +27,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ReduxProvider>
-      <html lang="en" data-theme="light">
-        <body className={poppins.className}>
-          <Navbar></Navbar>
-          <Providers>{children}</Providers>
-          <Footer></Footer>
-        </body>
-      </html>
-    </ReduxProvider>
+    <html lang="en" data-theme="light">
+      <body className={poppins.className}>
+        <Navbar></Navbar>
+        <Providers>{children}</Providers>
+        <Footer></Footer>
+      </body>
+    </html>
   );
 }

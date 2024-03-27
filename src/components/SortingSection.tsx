@@ -1,18 +1,20 @@
 "use client";
+import { GiClothes } from "react-icons/gi";
 import React, { useEffect, useState } from "react";
-import { Checkbox, Slider } from "@nextui-org/react";
-
-import Link from "next/link";
+import { Checkbox, Select, SelectItem, Slider } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
+import { categories } from "@/util/categories";
 
 const SortingSection = () => {
   const router = useRouter();
   const [amountValue, setAmountValue] = useState<number[]>([0, 0]);
   const [ratingValue, setRatingValue] = useState<number>();
   const [categoryValue, setCategoryValue] = useState<string>();
-  console.log(amountValue);
-  console.log(ratingValue);
-  console.log(categoryValue);
+
+  const handleSelectionChange = (e: any) => {
+    setCategoryValue(e.target.value);
+  };
+
   useEffect(() => {
     if (
       categoryValue !== undefined ||
@@ -52,45 +54,20 @@ const SortingSection = () => {
         <div className="border-l-4 border-black my-1 rounded">
           <p className="text-sm font-semibold p-1">Category</p>
         </div>
-        <Checkbox radius="none" onClickCapture={() => setCategoryValue("")}>
-          <span className="text-xs">All Products</span>
-        </Checkbox>
-        <Checkbox
-          radius="none"
-          onClickCapture={() => setCategoryValue("Shirt")}
+
+        <Select
+          label="Select Your Category"
+          placeholder="category"
+          startContent={<GiClothes />}
+          className="max-w-xs"
+          onChange={handleSelectionChange}
         >
-          <span className="text-xs">Shirt</span>
-        </Checkbox>
-        <Checkbox
-          radius="none"
-          onClickCapture={() => setCategoryValue("Jeans")}
-        >
-          <span className="text-xs">Jeans</span>
-        </Checkbox>
-        <Checkbox
-          radius="none"
-          onClickCapture={() => setCategoryValue("Sunglasses")}
-        >
-          <span className="text-xs">Sunglasses</span>
-        </Checkbox>
-        <Checkbox
-          radius="none"
-          onClickCapture={() => setCategoryValue("Footwear")}
-        >
-          <span className="text-xs">Footwear</span>
-        </Checkbox>
-        <Checkbox
-          radius="none"
-          onClickCapture={() => setCategoryValue("Jacket")}
-        >
-          <span className="text-xs">Jacket</span>
-        </Checkbox>
-        <Checkbox
-          radius="none"
-          onClickCapture={() => setCategoryValue("Watches")}
-        >
-          <span className="text-xs">Watch</span>
-        </Checkbox>
+          {categories.map((category) => (
+            <SelectItem key={category.name} value={category.name}>
+              {category.name}
+            </SelectItem>
+          ))}
+        </Select>
       </div>
       <div className="border my-5 border-black/10 rounded flex flex-col justify-center items-start ">
         <div className="border-l-4 border-black my-1 rounded">

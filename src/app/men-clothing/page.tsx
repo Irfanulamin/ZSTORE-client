@@ -10,7 +10,6 @@ export interface TSearchParam {
 }
 
 const ProductsPage = ({ searchParams }: { searchParams: TSearchParam }) => {
-  console.log(searchParams);
   return (
     <div className=" min-h-[90vh] h-[100%] pt-24">
       <Container>
