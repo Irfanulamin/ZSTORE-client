@@ -6,16 +6,16 @@ const Banner = async () => {
   const products = await res.json();
 
   return (
-    <div className="bg-black pt-32 pb-16">
+    <div className=" pt-32 pb-16 banner">
       <Container>
         <div>
           <div className="flex justify-center items-center w-full">
             <div>
-              <h1 className=" space-x-6 text-2xl lg:text-5xl font-semibold text-white text-center ">
+              <h1 className="tracking-wider  text-2xl lg:text-5xl font-semibold text-white text-center ">
                 ZStore Where Style Meets Substance, <br /> Your Ultimate Fashion
                 Destination
               </h1>
-              <p className="py-2 md:py-4 lg:py-8 text-xs md:text-sm lg:text-lg text-white/70 px-2 md:px-12 lg:px-44">
+              <p className="py-2 md:py-4 lg:py-4 text-xs md:text-sm lg:text-lg text-white/70 px-2 md:px-12 lg:px-44">
                 Welcome to ZStore, your ultimate fashion destination where style
                 meets substance. Dive into our diverse collection of
                 meticulously curated clothing and accessories, crafted to

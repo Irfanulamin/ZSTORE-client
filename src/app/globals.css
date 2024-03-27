@@ -20,3 +20,11 @@
     flex: 0 0 30%; /* Breakpoint SM slide covers 50% of the viewport */
   }
 }
+
+.banner {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4)),
+    url("/banner.jpg");
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+}

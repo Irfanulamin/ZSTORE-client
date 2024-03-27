@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/lib/Provider";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
+import ReduxProvider from "@/lib/ReduxProvider";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const poppins = Poppins({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "ZStore - Home",
@@ -22,12 +28,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light">
-      <body className={inter.className}>
-        <Navbar></Navbar>
-        <Providers>{children}</Providers>
-        <Footer></Footer>
-      </body>
-    </html>
+    <ReduxProvider>
+      <html lang="en" data-theme="light">
+        <body className={poppins.className}>
+          <Navbar></Navbar>
+          <Providers>{children}</Providers>
+          <Footer></Footer>
+        </body>
+      </html>
+    </ReduxProvider>
   );
 }

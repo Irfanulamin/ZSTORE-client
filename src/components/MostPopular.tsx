@@ -4,7 +4,11 @@ import Container from "./ui/Container";
 import ProductCard from "./ui/ProductCard";
 
 const MostPopular = async () => {
-  const res = await fetch("http://localhost:5000/men-clothing");
+  const res = await fetch("http://localhost:5000/trending-products", {
+    next: {
+      revalidate: 30,
+    },
+  });
   const products = await res.json();
   return (
     <div className="pt-24 pb-12">
@@ -21,7 +25,7 @@ const MostPopular = async () => {
             </p>
           </div>
           <div>
-            <CustomButton link="/flash-sale" content="View All" />
+            <CustomButton link="/men-clothing" content="View All" />
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-12">

@@ -5,12 +5,12 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import { GiCardboardBox } from "react-icons/gi";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import { TProduct } from "@/types/producttypes";
 
 const singleProductPage = async ({ params }: { params: { id: string } }) => {
   const res = await fetch(`http://localhost:5000/men-clothing/${params.id}`);
   const product = await res.json();
-  console.log(params);
-  console.log(product);
+
   return (
     <div className="min-h-[90vh] h-[100%] pt-6 md:pt-24 lg:pt-24">
       <Container>
@@ -95,5 +95,14 @@ const singleProductPage = async ({ params }: { params: { id: string } }) => {
     </div>
   );
 };
+
+export async function generateStaticParams() {
+  const res = await fetch(`http://localhost:5000/men-clothing`);
+  const products = await res.json();
+
+  return products.slice(0, 10).map((product: TProduct) => {
+    id: product._id;
+  });
+}
 
 export default singleProductPage;

@@ -3,13 +3,14 @@ import Image from "next/image";
 import Container from "./ui/Container";
 import { useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
+import Link from "next/link";
 // import { button } from "@nextui-org/react";
 
 const Categories = () => {
   const [showAll, setShowAll] = useState(false);
   const categories = [
     {
-      name: "Shoes",
+      name: "Footwear",
       image: "https://i.ibb.co/g4PDQ9H/The-Connaught-Oxford-in-Black.jpg",
     },
     {
@@ -21,7 +22,7 @@ const Categories = () => {
       image: "https://i.ibb.co/w0rSKnn/Men-Slant-Pocket-Straight-Leg-Jeans.jpg",
     },
     {
-      name: "Jackets",
+      name: "Jacket",
       image:
         "https://i.ibb.co/4YTzFCY/Hair-Mould-Ani-Kang-spring-Autumn-Cool-Luxury-Short-Black-Soft-Light-Pu-Leather-Jacket-Men-Zipper-Ca.jpg",
     },
@@ -31,13 +32,13 @@ const Categories = () => {
         "https://i.ibb.co/98GqzV1/997a74e5-4e7a-4631-810a-8199dde0fe2b.jpg",
     },
     {
-      name: "Shirts",
+      name: "Shirt",
       image:
         "https://i.ibb.co/cxcdzX5/H2-H-Mens-Casual-Slim-Fit-Long-Sleeve-Dress-Shirts-Basic-Designed-Business-Shirts.jpg",
     },
   ];
   return (
-    <div id="categories">
+    <div>
       <Container>
         <div className="flex justify-center items-center w-full">
           <div>
@@ -56,24 +57,10 @@ const Categories = () => {
           <div className=" grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-6 lg:gap-6">
             {categories.slice(0, 1).map((category) => (
               <div key={category.name} className="mt-2  relative">
-                <Image
-                  className="w-full h-24 md:h-full lg:h-full object-cover rounded-md brightness-50"
-                  src={category.image}
-                  width={500}
-                  height={500}
-                  alt={category.name}
-                ></Image>
-                <p className="hidden md:block lg:block absolute bottom-2 left-2 px-2 py-1 text-white text-3xl font-semibold">
-                  {category.name}
-                </p>
-              </div>
-            ))}
-            <div>
-              {categories.slice(1, 3).map((category) => (
-                <div className="mt-2 relative" key={category.name}>
+                <Link href={`/men-clothing?category=${category.name}`}>
                   <Image
+                    className="w-full h-24 md:h-full lg:h-full object-cover rounded-md brightness-50"
                     src={category.image}
-                    className="w-full h-24 md:h-96 lg:h-96 object-cover rounded-md brightness-50"
                     width={500}
                     height={500}
                     alt={category.name}
@@ -81,21 +68,41 @@ const Categories = () => {
                   <p className="hidden md:block lg:block absolute bottom-2 left-2 px-2 py-1 text-white text-3xl font-semibold">
                     {category.name}
                   </p>
+                </Link>
+              </div>
+            ))}
+            <div>
+              {categories.slice(1, 3).map((category) => (
+                <div className="mt-2 relative" key={category.name}>
+                  <Link href={`/men-clothing?category=${category.name}`}>
+                    <Image
+                      src={category.image}
+                      className="w-full h-24 md:h-96 lg:h-96 object-cover rounded-md brightness-50"
+                      width={500}
+                      height={500}
+                      alt={category.name}
+                    ></Image>
+                    <p className="hidden md:block lg:block absolute bottom-2 left-2 px-2 py-1 text-white text-3xl font-semibold">
+                      {category.name}
+                    </p>
+                  </Link>
                 </div>
               ))}
             </div>
             {categories.slice(3, 4).map((category) => (
               <div className=" mt-2 relative " key={category.name}>
-                <Image
-                  src={category.image}
-                  className="w-full h-24 md:h-full lg:h-full object-cover rounded-md brightness-50"
-                  width={500}
-                  height={500}
-                  alt={category.name}
-                ></Image>
-                <p className="hidden md:block lg:block absolute bottom-2 left-2 px-2 py-1 text-white text-3xl font-semibold">
-                  {category.name}
-                </p>
+                <Link href={`/men-clothing?category=${category.name}`}>
+                  <Image
+                    src={category.image}
+                    className="w-full h-24 md:h-full lg:h-full object-cover rounded-md brightness-50"
+                    width={500}
+                    height={500}
+                    alt={category.name}
+                  ></Image>
+                  <p className="hidden md:block lg:block absolute bottom-2 left-2 px-2 py-1 text-white text-3xl font-semibold">
+                    {category.name}
+                  </p>
+                </Link>
               </div>
             ))}
           </div>
@@ -103,16 +110,18 @@ const Categories = () => {
             <div className=" grid grid-cols-2 gap-6">
               {categories.slice(4, 6).map((category) => (
                 <div key={category.name} className="mt-2 relative">
-                  <Image
-                    className="mt-2 relative w-full h-96 object-cover rounded-md brightness-50"
-                    src={category.image}
-                    width={500}
-                    height={500}
-                    alt={category.name}
-                  ></Image>
-                  <p className="hidden md:block lg:block absolute bottom-2 left-2 px-2 py-1 text-white text-3xl font-semibold">
-                    {category.name}
-                  </p>
+                  <Link href={`/men-clothing?category=${category.name}`}>
+                    <Image
+                      className="mt-2 relative w-full h-96 object-cover rounded-md brightness-50"
+                      src={category.image}
+                      width={500}
+                      height={500}
+                      alt={category.name}
+                    ></Image>
+                    <p className="hidden md:block lg:block absolute bottom-2 left-2 px-2 py-1 text-white text-3xl font-semibold">
+                      {category.name}
+                    </p>
+                  </Link>
                 </div>
               ))}
             </div>

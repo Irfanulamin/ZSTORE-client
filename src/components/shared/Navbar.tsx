@@ -41,22 +41,34 @@ const Navbar = () => {
           </NavbarBrand>
           <NavbarContent className="hidden sm:flex gap-4" justify="center">
             <NavbarItem>
-              <Link href="/">Home</Link>
+              <Link className="text-black" href="/">
+                Home
+              </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link href="#categories">Categories</Link>
+              <Link className="text-black" href="/categories">
+                Categories
+              </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link href="/men-clothing">Products</Link>
+              <Link className="text-black" href="/men-clothing">
+                Products
+              </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link href="/flash-sale">Flash Sale</Link>
+              <Link className="text-black" href="/flash-sale">
+                Flash Sale
+              </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link href="/about">About us</Link>
+              <Link className="text-black" href="/about">
+                About us
+              </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link href="/contact">Contact us</Link>
+              <Link className="text-black" href="/contact">
+                Contact us
+              </Link>
             </NavbarItem>
           </NavbarContent>
           <NavbarContent justify="end"></NavbarContent>
