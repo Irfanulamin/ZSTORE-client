@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import Container from "../../components/ui/Container";
+
 import { categories } from "@/util/categories";
+import Container from "@/components/ui/Container";
 // import { button } from "@nextui-org/react";
 
 const Categories = () => {

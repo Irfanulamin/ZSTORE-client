@@ -27,9 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="light">
       <body className={poppins.className}>
-        <Navbar></Navbar>
         <Providers>{children}</Providers>
-        <Footer></Footer>
       </body>
     </html>
   );
