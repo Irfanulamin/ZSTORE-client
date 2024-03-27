@@ -23,13 +23,13 @@ const Footer = () => {
             Categories
           </Link>
           <Link
-            href="/aboutus"
+            href="/about-us"
             className="text-xs md:text-base lg:text-lg  py-2  lg:py-4 text-white"
           >
             About us
           </Link>
           <Link
-            href="/conatctus"
+            href="/contact-us"
             className="text-xs md:text-base lg:text-lg  py-2  lg:py-4 text-white"
           >
             Contact Us

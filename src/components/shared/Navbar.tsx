@@ -19,7 +19,7 @@ const Navbar = () => {
     "Men-Clothing",
     "Flash-Sale",
     "About-Us",
-    "Conatct-Us",
+    "Contact-Us",
   ];
 
   return (
@@ -61,12 +61,12 @@ const Navbar = () => {
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link className="text-black" href="/about">
+              <Link className="text-black" href="/about-us">
                 About us
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link className="text-black" href="/contact">
+              <Link className="text-black" href="/contact-us">
                 Contact us
               </Link>
             </NavbarItem>
