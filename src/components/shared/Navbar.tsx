@@ -7,10 +7,20 @@ import {
   NavbarContent,
   NavbarItem,
   NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
 } from "@nextui-org/react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+  const menuItems = [
+    "Categories",
+    "Men-Clothing",
+    "Flash-Sale",
+    "About-Us",
+    "Contact-Us",
+  ];
 
   return (
     <div className="absolute w-full">
@@ -20,6 +30,10 @@ const Navbar = () => {
           maxWidth="2xl"
           shouldHideOnScroll
         >
+          <NavbarMenuToggle
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            className="sm:hidden"
+          />
           <NavbarBrand>
             <Link href="/" className="font-bold text-inherit">
               Z-Store
@@ -58,6 +72,15 @@ const Navbar = () => {
             </NavbarItem>
           </NavbarContent>
           <NavbarContent justify="end"></NavbarContent>
+          <NavbarMenu>
+            {menuItems.map((item, index) => (
+              <NavbarMenuItem key={`${item}-${index}`}>
+                <Link className="w-full" href={`/${item.toLowerCase()}`}>
+                  {item}
+                </Link>
+              </NavbarMenuItem>
+            ))}
+          </NavbarMenu>
         </ZNavbar>
       </div>
     </div>
