@@ -10,7 +10,7 @@ const AboutPage = () => {
           <h1 className="text-4xl font-extrabold text-gray-900 sm:text-4xl">
             About Z-Store
           </h1>
-          <p className="text-left mt-4 text-sm lg:text-xl text-gray-600">
+          <p className="text-left mt-4 text-sm lg:text-xl text-gray-800">
             Welcome to Z-Store, your one-stop destination for all your shopping
             needs. At Z-Store, we pride ourselves on offering a wide range of
             high-quality products at affordable prices. Whether you're looking

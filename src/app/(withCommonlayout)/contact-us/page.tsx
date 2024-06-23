@@ -25,8 +25,8 @@ const ContactUsPage = () => {
             </li>
           </ul>
         </div>
-        <div className="mt-8 text-left bg-slate-400 p-20 rounded">
-          <h2 className="text-xl font-semibold text-white">
+        <div className="mt-8 text-left bg-slate-900 p-20 rounded">
+          <h2 className="text-xl font-semibold text-white bg-black">
             Send us a Message:
           </h2>
           <form className="mt-4">
@@ -34,7 +34,7 @@ const ContactUsPage = () => {
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-white"
                 >
                   Name
                 </label>
@@ -48,7 +48,7 @@ const ContactUsPage = () => {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-white"
                 >
                   Email
                 </label>
@@ -63,7 +63,7 @@ const ContactUsPage = () => {
             <div className="mt-4">
               <label
                 htmlFor="message"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-white"
               >
                 Message
               </label>

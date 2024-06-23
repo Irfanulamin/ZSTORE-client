@@ -28,3 +28,12 @@
   background-position: center center;
   height: 100%;
 }
+
+.bg_topproducts {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("/bg_topproducts.jfif");
+  background-size: cover;
+  background-position: center center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
