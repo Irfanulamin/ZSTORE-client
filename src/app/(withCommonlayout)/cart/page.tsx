@@ -10,10 +10,11 @@ import { CiCircleMinus, CiCircleRemove } from "react-icons/ci";
 import { CgShoppingCart } from "react-icons/cg";
 import Link from "next/link";
 import { FieldValues, useForm } from "react-hook-form";
+import { useCreateOrdersMutation } from "@/redux/feature/orderPostApi";
 
 const CartPage = () => {
+  const [createOrder] = useCreateOrdersMutation();
   const { cart } = useAppSelector((state) => state.cart);
-  console.log(cart);
   const dispatch = useAppDispatch();
   const removeFromCartByIdSubmit = (id: any) => {
     dispatch(removeFromCartById({ id: id }));
@@ -30,10 +31,9 @@ const CartPage = () => {
         cart,
         status: "pending",
       };
-      console.log(orderData);
+      createOrder(orderData);
     } catch (error: any) {
       console.error("Error during registration:", error.message);
-      // Handle the error appropriately (e.g., show an error message to the user)
     }
   };
 
@@ -134,6 +134,7 @@ const CartPage = () => {
                       <input
                         className="focus:outline-slate-900 text-slate-900 font-semibold rounded-md p-2 border-2 border-black"
                         required
+                        type="text"
                         placeholder="username"
                         {...register("name")}
                         id="name"
@@ -146,6 +147,7 @@ const CartPage = () => {
                       <input
                         className="focus:outline-slate-900 text-slate-900 font-semibold rounded-md p-2 border-2 border-black"
                         required
+                        type="email"
                         placeholder="email"
                         {...register("email")}
                         id="email"
