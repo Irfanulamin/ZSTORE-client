@@ -11,16 +11,6 @@ const AllProductsDashboard = async () => {
     <div>
       <div className=" overflow-scroll">
         <table className="table  w-full ">
-          <thead>
-            <tr>
-              <th>SL no.</th>
-              <th>Item</th>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Tag</th>
-              <th>Price</th>
-            </tr>
-          </thead>
           {products &&
             products.map((product: TProduct, index: number) => (
               <ProductTable product={product} index={index} key={product._id} />

@@ -6,12 +6,20 @@ import { GiCardboardBox } from "react-icons/gi";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { TProduct } from "@/types/producttypes";
+import { IoCartSharp } from "react-icons/io5";
+import AddToCart from "@/components/ui/AddToCart";
+import ProductCard from "@/components/ui/ProductCard";
+import CustomButton from "@/components/ui/Button";
 
 const singleProductPage = async ({ params }: { params: { id: string } }) => {
   const res = await fetch(
     `http://zstore-server.vercel.app/men-clothing/${params.id}`
   );
   const product = await res.json();
+
+  const response = await fetch("http://zstore-server.vercel.app/men-clothing");
+
+  const products = await response.json();
 
   return (
     <div className="min-h-[90vh] h-[100%] pt-6 md:pt-24 lg:pt-24">
@@ -71,6 +79,8 @@ const singleProductPage = async ({ params }: { params: { id: string } }) => {
                 </div>
               </div>
             </div>
+            {/* <button onClick={() => console.log("first")}>Hi</button> */}
+            <AddToCart product={product} />
           </div>
         </div>
         <div className="py-4 md:py-6 lg:py-12">
@@ -91,6 +101,19 @@ const singleProductPage = async ({ params }: { params: { id: string } }) => {
                 . {keypoint}
               </p>
             ))}
+          </div>
+        </div>
+        <div>
+          <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 md:gap-6 lg:gap-12">
+            {products &&
+              products
+                .slice(0, 12)
+                .map((product: TProduct, index: number) => (
+                  <ProductCard product={product} key={index} />
+                ))}
+          </div>
+          <div className="flex justify-center w-full">
+            <CustomButton link="/men-clothing" content="View All" />
           </div>
         </div>
       </Container>

@@ -11,6 +11,7 @@ import {
   NavbarMenuItem,
 } from "@nextui-org/react";
 import { IoCartSharp, IoLogOutOutline } from "react-icons/io5";
+import { useAppSelector } from "@/redux/hook";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -23,6 +24,7 @@ const Navbar = () => {
     "Contact-Us",
   ];
 
+  const { cart } = useAppSelector((state) => state.cart);
   return (
     <div className="absolute w-full">
       <div className="relative w-full z-10">
@@ -80,7 +82,14 @@ const Navbar = () => {
             </NavbarItem>
             <NavbarItem>
               <Link className="text-black" href="/cart">
-                <IoCartSharp className="h-6 w-6" />
+                <IoCartSharp className="h-6 w-6 relative" />
+                {cart.length !== 0 && (
+                  <div className="top-2 right-4 absolute ">
+                    <p className="bg-red-500 text-white text-xs px-1  rounded-full">
+                      {cart.length}
+                    </p>
+                  </div>
+                )}
               </Link>
             </NavbarItem>
           </NavbarContent>

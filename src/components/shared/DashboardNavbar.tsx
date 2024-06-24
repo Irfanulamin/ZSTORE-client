@@ -12,7 +12,7 @@ import Link from "next/link";
 const DashboardNavbar = () => {
   return (
     <div className="w-full">
-      <Navbar position="static" className=" bg-black/80 py-2.5">
+      <Navbar position="static" className=" bg-black py-2.5">
         <NavbarBrand>
           <Link href="/" className="font-bold text-white">
             Z-Store
