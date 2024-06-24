@@ -65,7 +65,7 @@ const LoginPage = () => {
               <div className=" py-2">
                 <button
                   type="submit"
-                  className="rounded w-full py-4 bg-slate-600 text-base font-bold text-white border-slate-900 border-2 border-b-4 active:border-b-2 hover:border-slate-800"
+                  className="rounded w-full py-4 bg-slate-600 text-base font-bold text-whitem border-slate-900 border-2 border-b-4 active:border-b-2 hover:border-slate-800"
                 >
                   Login
                 </button>

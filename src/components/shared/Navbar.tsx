@@ -10,6 +10,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
 } from "@nextui-org/react";
+import { IoCartSharp, IoLogOutOutline } from "react-icons/io5";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -71,7 +72,18 @@ const Navbar = () => {
               </Link>
             </NavbarItem>
           </NavbarContent>
-          <NavbarContent justify="end"></NavbarContent>
+          <NavbarContent justify="end">
+            <NavbarItem>
+              <Link className="text-black" href="/login">
+                Login <IoLogOutOutline className="inline-block w-6 h-6" />
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link className="text-black" href="/cart">
+                <IoCartSharp className="h-6 w-6" />
+              </Link>
+            </NavbarItem>
+          </NavbarContent>
           <NavbarMenu>
             {menuItems.map((item, index) => (
               <NavbarMenuItem key={`${item}-${index}`}>

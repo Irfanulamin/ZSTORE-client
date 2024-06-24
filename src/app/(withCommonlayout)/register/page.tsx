@@ -1,9 +1,40 @@
+"use client";
 import React from "react";
 import Container from "@/components/ui/Container";
 import Image from "next/image";
 import Link from "next/link";
+import { FieldValues, useForm } from "react-hook-form";
+import { useRegisterUserMutation } from "@/redux/feature/registerApi";
 
 const RegisterPage = () => {
+  // const navigate = useNavigate();
+  const [registration] = useRegisterUserMutation();
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = async (formData: FieldValues) => {
+    try {
+      const registerData = {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+      };
+      console.log(registerData);
+
+      // Assuming registration is an asynchronous function that returns a promise
+      const response: any = await registration(registerData);
+
+      // Check the response for success or handle accordingly
+      if (response.data && response.data.success) {
+        // navigate("/login");dassaa
+        console.log("User registered successfully");
+      } else {
+        console.error("Registration failed:", response.data.message);
+      }
+    } catch (error: any) {
+      console.error("Error during registration:", error.message);
+      // Handle the error appropriately (e.g., show an error message to the user)
+    }
+  };
   return (
     <div className="min-h-[90vh] h-[100%] pt-6 md:pt-24 lg:pt-36">
       <Container>
@@ -25,8 +56,8 @@ const RegisterPage = () => {
                 Enter your email and password to access power of a admin.
               </p>
             </div>
-            {/* onSubmit={handleSubmit(onSubmit)} */}
-            <form>
+
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="flex flex-col gap-6">
                 <div className="flex flex-col w-full">
                   <label className="text-left text-black font-semibold text-lg">
@@ -35,8 +66,8 @@ const RegisterPage = () => {
                   <input
                     className="focus:outline-slate-600 text-slate-600 font-semibold rounded-md p-2 border-2 border-black"
                     placeholder="username"
-                    // {...register("username")}
-                    id="username"
+                    {...register("name")}
+                    id="name"
                   />
                 </div>
                 <div className="flex flex-col w-full">
@@ -46,7 +77,7 @@ const RegisterPage = () => {
                   <input
                     className="focus:outline-slate-600 text-slate-600 font-semibold rounded-md p-2 border-2 border-black"
                     placeholder="email"
-                    // {...register("email")}
+                    {...register("email")}
                     id="email"
                   />
                 </div>
@@ -57,7 +88,7 @@ const RegisterPage = () => {
                   <input
                     className="focus:outline-slate-600 text-slate-600 font-semibold rounded-md p-2 border-2 border-black"
                     placeholder="password"
-                    // {...register("password")}
+                    {...register("password")}
                     id="password"
                   />
                 </div>
