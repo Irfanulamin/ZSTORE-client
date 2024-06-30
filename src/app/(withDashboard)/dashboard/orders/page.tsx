@@ -10,6 +10,16 @@ import { RiTimer2Line } from "react-icons/ri";
 import { Switch } from "@nextui-org/switch";
 import { SubmitHandler } from "react-hook-form";
 import { IoMdDoneAll } from "react-icons/io";
+import { Avatar } from "@nextui-org/react";
+
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  Button,
+} from "@nextui-org/react";
+import { FaShoppingCart } from "react-icons/fa";
 
 const OrderControlPanel = () => {
   const { data } = useGetOrdersQuery("");
@@ -26,16 +36,24 @@ const OrderControlPanel = () => {
     }
   };
   return (
-    <div>
-      <div className="w-full flex flex-col gap-y-4 my-6 ">
-        {data &&
-          data.map((item: any, index: number) => (
+    <div className="w-full flex flex-col gap-y-4 my-6 ">
+      {data &&
+        data
+          .slice()
+          .reverse()
+          .map((item: any, index: number) => (
             <div
               key={item._id}
-              className="flex justify-start items-center gap-x-1 md:gap-x-4 lg:gap-x-8 w-full"
+              className="flex justify-between items-center gap-x-1 md:gap-x-4 lg:gap-x-8 w-full"
             >
               <div className="hidden md:block lg:block">
                 <h4 className="text-semibold  text-xl">{index + 1}</h4>
+              </div>
+              <div>
+                <Avatar
+                  isBordered
+                  src="https://i.pravatar.cc/150?u=a04258114e29026302d"
+                />
               </div>
               <div>
                 <p className="text-xs md:text-lg lg:text-lg font-bold text-start">
@@ -53,18 +71,30 @@ const OrderControlPanel = () => {
                   </div>
                 </div>
               </div>
+              <div>
+                <Dropdown>
+                  <DropdownTrigger>
+                    <Button variant="shadow">
+                      Ordered Items <FaShoppingCart />
+                    </Button>
+                  </DropdownTrigger>
+                  <DropdownMenu aria-label="Static Actions">
+                    {item.cart.map((item: any, index: number) => (
+                      <DropdownItem key={index}>
+                        <span className="text-black font-semibold">
+                          {item.name}
+                        </span>
+                        <span className="mx-1 text-red-500 font-semibold">
+                          x{item.quantity}
+                        </span>
+                      </DropdownItem>
+                    ))}
+                  </DropdownMenu>
+                </Dropdown>
+              </div>
 
               <div>
-                <p className="text-xs md:text-base lg:text-base text-green-500 font-semibold text-start">
-                  {item.cart.map((item: any, index: number) => (
-                    <div key={index}>
-                      <span className="text-black">{item.name}</span>
-                      <span className="mx-1 text-red-500">
-                        x{item.quantity}
-                      </span>
-                    </div>
-                  ))}
-                </p>
+                <p className="text-xs md:text-base lg:text-base text-green-500 font-semibold text-start"></p>
               </div>
               <div>
                 <p className="text-xs md:text-base lg:text-base text-green-700 font-semibold text-start">
@@ -78,6 +108,7 @@ const OrderControlPanel = () => {
                   $
                 </p>
               </div>
+
               {item.status === "pending" && (
                 <div className="flex justify-center items-center">
                   <RiTimer2Line className="text-yellow-500 w-4 h-4" />
@@ -104,7 +135,6 @@ const OrderControlPanel = () => {
               </div>
             </div>
           ))}
-      </div>
     </div>
   );
 };

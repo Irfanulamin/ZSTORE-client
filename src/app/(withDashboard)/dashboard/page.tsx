@@ -1,21 +1,22 @@
+"use client";
+
+import CollectedData from "@/components/dashboarUI/CollectedData";
+import LocationChart from "@/components/dashboarUI/LocationChart";
+import RevenueChart from "@/components/dashboarUI/RevenueChart";
 import React from "react";
-import { RiAdminFill } from "react-icons/ri";
 
 const DashboardPage = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-[80vh]">
-      <div className="flex items-center gap-4">
-        <RiAdminFill size={50} className="text-blue-600" />
-        <span className="text-xl font-semibold text-gray-800">
-          Administrator
-        </span>
+    <div className=" p-1 md:p-6 lg:p-12 ">
+      <div className="flex gap-12 flex-col md:flex-row lg:flex-row w-full justify-between items-center">
+        <div className="w-full">
+          <RevenueChart />
+        </div>
+        <div className="w-1/2">
+          <LocationChart />
+        </div>
       </div>
-      <div>
-        <h1 className="text-3xl font-bold mb-4">Welcome to Your Dashboard</h1>
-      </div>
-      <p className="text-lg text-gray-700 mb-8">
-        Explore and manage your dashboard below
-      </p>
+      <CollectedData />
     </div>
   );
 };
