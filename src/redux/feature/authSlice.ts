@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type TAuthState = {
   email: null | string;
@@ -12,9 +12,8 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setUser: (state, action) => {
+    setUser: (state, action: PayloadAction<string>) => {
       console.log(action.payload);
-      console.log(state.email);
       state.email = action.payload;
     },
     logOut: (state) => {

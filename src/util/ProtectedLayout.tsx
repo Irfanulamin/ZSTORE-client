@@ -1,9 +1,10 @@
+"use client";
 import { useAppSelector } from "@/redux/hook";
 import { useRouter } from "next/navigation";
 
 const ProtectedLayer = ({ children }: { children: any }) => {
-  // const email = useAppSelector(userCurrentEmail);
-  console.log(email);
+  const email = useAppSelector((state) => state.auth.email);
+
   const router = useRouter();
 
   if (!email) {

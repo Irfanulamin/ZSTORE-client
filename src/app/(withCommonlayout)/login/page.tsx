@@ -12,7 +12,6 @@ const LoginPage = () => {
   const [login] = useLoginUserMutation();
   const { register, handleSubmit } = useForm();
   const dispatch = useAppDispatch();
-  // const {} = useAppSelector()
 
   const onSubmit = async (formData: FieldValues) => {
     try {
