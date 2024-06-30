@@ -32,7 +32,7 @@ const OrderControlPanel = () => {
           data.map((item: any, index: number) => (
             <div
               key={item._id}
-              className="flex justify-start items-center gap-x-4"
+              className="flex justify-start items-center gap-x-1 md:gap-x-4 lg:gap-x-8 w-full"
             >
               <div className="hidden md:block lg:block">
                 <h4 className="text-semibold  text-xl">{index + 1}</h4>
@@ -55,7 +55,7 @@ const OrderControlPanel = () => {
               </div>
 
               <div>
-                <p className="text-xs text-green-500 font-semibold text-start">
+                <p className="text-xs md:text-base lg:text-base text-green-500 font-semibold text-start">
                   {item.cart.map((item: any, index: number) => (
                     <div key={index}>
                       <span className="text-black">{item.name}</span>
@@ -67,7 +67,7 @@ const OrderControlPanel = () => {
                 </p>
               </div>
               <div>
-                <p className="text-xs text-green-700 font-semibold text-start">
+                <p className="text-xs md:text-base lg:text-base text-green-700 font-semibold text-start">
                   {item.cart
                     .reduce(
                       (acc: any, item: any) =>

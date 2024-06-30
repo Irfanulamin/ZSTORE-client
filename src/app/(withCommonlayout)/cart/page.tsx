@@ -51,7 +51,7 @@ const CartPage = () => {
               </div>
               <div className="w-full flex flex-col gap-y-4 my-6 ">
                 {cart &&
-                  cart.map((item, index) => (
+                  cart.map((item: any, index: number) => (
                     <div
                       key={item.id}
                       className="flex justify-start items-center gap-x-4"
@@ -103,7 +103,8 @@ const CartPage = () => {
                   <p className="font-semibold text-red-800 bg-white border-2 border-slate-900 px-2 rounded py-2 border-b-4">
                     {cart
                       .reduce(
-                        (acc, item) => acc + item.amount * item.quantity,
+                        (acc: any, item: any) =>
+                          acc + item.amount * item.quantity,
                         0
                       )
                       .toFixed(2)}
