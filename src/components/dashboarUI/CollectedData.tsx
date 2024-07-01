@@ -89,7 +89,7 @@ const CollectedData = () => {
                   <div>
                     <Avatar
                       isBordered
-                      src="https://i.pravatar.cc/150?u=a04258114e29026302d"
+                      src="https://i.ibb.co/XWqvgyv/Minimalist-Avatar-Illustration.jpg"
                     />
                   </div>
                   <div>

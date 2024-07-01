@@ -43,7 +43,7 @@ const LocationChart = () => {
         )
     : [];
   return (
-    <div className="bg-blue-200 p-6 rounded shadow-2xl">
+    <div>
       <div className="flex items-center gap-1 ">
         <BiWorld className="w-8 h-8" />
         <h1 className="text-xl font-medium text-center">Revenue Zone</h1>

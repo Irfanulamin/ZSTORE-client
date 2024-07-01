@@ -9,7 +9,7 @@ const AllProductsDashboard = async () => {
 
   return (
     <div>
-      <div className=" overflow-scroll">
+      <div className=" overflow-x-auto">
         <table className="table  w-full ">
           {products &&
             products.map((product: TProduct, index: number) => (

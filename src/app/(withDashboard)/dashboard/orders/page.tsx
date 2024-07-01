@@ -36,7 +36,7 @@ const OrderControlPanel = () => {
     }
   };
   return (
-    <div className="w-full flex flex-col gap-y-4 my-6 ">
+    <div className="w-full flex flex-col gap-y-4 my-6  p-6">
       {data &&
         data
           .slice()
@@ -52,7 +52,7 @@ const OrderControlPanel = () => {
               <div>
                 <Avatar
                   isBordered
-                  src="https://i.pravatar.cc/150?u=a04258114e29026302d"
+                  src="https://i.ibb.co/XWqvgyv/Minimalist-Avatar-Illustration.jpg"
                 />
               </div>
               <div>

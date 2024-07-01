@@ -7,7 +7,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <ProtectedLayer>
       <DashboardNavbar />
-      <div className="block md:grid lg:grid grid-cols-5">
+      <div className="block  lg:grid grid-cols-5">
         <Sidebar />
         <div className="col-start-2 col-end-7 h-[100%] bg-black/10">
           {children}

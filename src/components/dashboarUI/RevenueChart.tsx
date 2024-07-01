@@ -38,7 +38,7 @@ const RevenueChart = () => {
     : [];
 
   return (
-    <div className="bg-red-200 p-6 rounded shadow-2xl">
+    <div>
       <div className="flex items-center gap-1 ">
         <MdAttachMoney className="w-8 h-8" />
         <h1 className="text-xl font-medium text-center">Total Revenues</h1>

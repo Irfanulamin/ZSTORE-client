@@ -10,10 +10,12 @@ import {
   NavbarMenu,
   NavbarMenuItem,
 } from "@nextui-org/react";
-import { IoCartSharp, IoLogOutOutline } from "react-icons/io5";
-import { useAppSelector } from "@/redux/hook";
+import { IoBanOutline, IoCartSharp, IoLogOutOutline } from "react-icons/io5";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { logOut } from "@/redux/feature/authSlice";
 
 const Navbar = () => {
+  const email = useAppSelector((state) => state.auth.email);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
@@ -25,6 +27,8 @@ const Navbar = () => {
   ];
 
   const { cart } = useAppSelector((state) => state.cart);
+
+  const dispatch = useAppDispatch();
   return (
     <div className="absolute w-full">
       <div className="relative w-full z-10">
@@ -75,11 +79,20 @@ const Navbar = () => {
             </NavbarItem>
           </NavbarContent>
           <NavbarContent justify="end">
-            <NavbarItem>
-              <Link className="text-black" href="/login">
-                Login <IoLogOutOutline className="inline-block w-6 h-6" />
-              </Link>
-            </NavbarItem>
+            {email ? (
+              <NavbarItem onClick={() => dispatch(logOut())}>
+                <Link className="text-black" href="/login">
+                  Logout{" "}
+                  <IoBanOutline className="inline-block w-6 h-6 text-red-600" />
+                </Link>
+              </NavbarItem>
+            ) : (
+              <NavbarItem>
+                <Link className="text-black" href="/login">
+                  Login <IoLogOutOutline className="inline-block w-6 h-6 " />
+                </Link>
+              </NavbarItem>
+            )}
             <NavbarItem>
               <Link className="text-black" href="/cart">
                 <IoCartSharp className="h-6 w-6 relative" />

@@ -5,12 +5,20 @@ import { useLoginUserMutation } from "@/redux/feature/loginApi";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 
 const LoginPage = () => {
+  const router = useRouter();
   const [login] = useLoginUserMutation();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      email: "admintest@test.com",
+      password: "admin123",
+    },
+  });
   const dispatch = useAppDispatch();
 
   const onSubmit = async (formData: FieldValues) => {
@@ -23,9 +31,8 @@ const LoginPage = () => {
       const response: any = await login(loginData);
 
       if (response.data && response.data.success) {
-        console.log(formData.email);
         dispatch(setUser(formData.email));
-        console.log("User Login successfully");
+        router.push("/dashboard");
       } else {
         console.error("Registration failed:", response.data.message);
       }
