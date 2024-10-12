@@ -1,7 +1,9 @@
 import { TProduct } from "@/types/producttypes";
-import CustomButton from "./ui/Button";
+
 import Container from "./ui/Container";
 import ProductCard from "./ui/ProductCard";
+
+import Link from "next/link";
 
 const MostPopular = async () => {
   const res = await fetch("http://zstore-server.vercel.app/trending-products", {
@@ -25,7 +27,7 @@ const MostPopular = async () => {
             </p>
           </div>
           <div>
-            <CustomButton link="/men-clothing" content="View All" />
+            <Link href="\men-clothing">View All</Link>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-12">

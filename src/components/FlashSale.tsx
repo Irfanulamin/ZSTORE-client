@@ -1,7 +1,8 @@
 import { TProduct } from "@/types/producttypes";
-import CustomButton from "./ui/Button";
+
 import Container from "./ui/Container";
 import ProductCard from "./ui/ProductCard";
+import Link from "next/link";
 
 const FlashSale = async () => {
   const res = await fetch("http://zstore-server.vercel.app/flash-sale", {
@@ -20,7 +21,7 @@ const FlashSale = async () => {
             </h4>
           </div>
           <div>
-            <CustomButton link="/flash-sale" content="View All" />
+            <Link href="/flash-sale">View All</Link>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-12">

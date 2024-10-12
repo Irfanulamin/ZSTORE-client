@@ -11,3 +11,11 @@ export interface TProduct {
   rating: number;
   product_id: string;
 }
+
+export interface TOrder {
+  id: number;
+  cart: {
+    amount: number;
+    quantity: number;
+  }[];
+}
