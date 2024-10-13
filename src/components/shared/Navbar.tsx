@@ -83,6 +83,13 @@ const Navbar = () => {
                 Reviews
               </Link>
             </NavbarItem>
+            {email && (
+              <NavbarItem>
+                <Link className="text-black" href="/dashboard">
+                  Dashboard
+                </Link>
+              </NavbarItem>
+            )}
           </NavbarContent>
           <NavbarContent justify="end">
             {email ? (
@@ -120,6 +127,13 @@ const Navbar = () => {
                 </Link>
               </NavbarMenuItem>
             ))}
+            {email && (
+              <NavbarMenuItem>
+                <Link className="w-full" href="/dashboard">
+                  Dashboard
+                </Link>
+              </NavbarMenuItem>
+            )}
           </NavbarMenu>
         </ZNavbar>
       </div>

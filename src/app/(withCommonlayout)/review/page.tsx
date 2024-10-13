@@ -37,7 +37,7 @@ const ReviewPage = () => {
                         {review.product_name} Review #{index + 1}
                       </h1>
                       <Image
-                        width={40} // Adjusted size for a better fit
+                        width={40}
                         height={40}
                         src={review.product_image}
                         alt="product-pic"

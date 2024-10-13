@@ -38,8 +38,17 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       state.cart = [];
     },
+    incrementQuantity: (state, action) => {
+      const index = state.cart.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      if (index !== -1) {
+        state.cart[index].quantity += 1; // Increment the quantity by 1
+      }
+    },
   },
 });
 
 export default cartSlice.reducer;
-export const { addToCart, removeFromCartById } = cartSlice.actions;
+export const { addToCart, removeFromCartById, clearCart, incrementQuantity } =
+  cartSlice.actions;

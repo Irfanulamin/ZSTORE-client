@@ -2,11 +2,14 @@
 "use client";
 import Container from "@/components/ui/Container";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { removeFromCartById } from "@/redux/feature/cartSlice";
-import { divider } from "@nextui-org/react";
+import {
+  incrementQuantity,
+  removeFromCartById,
+  clearCart,
+} from "@/redux/feature/cartSlice";
 import Image from "next/image";
-import React from "react";
-import { CiCircleMinus, CiCircleRemove } from "react-icons/ci";
+import React, { useCallback } from "react";
+import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { CgShoppingCart } from "react-icons/cg";
 import Link from "next/link";
 import { FieldValues, useForm } from "react-hook-form";
@@ -16,9 +19,16 @@ const CartPage = () => {
   const [createOrder] = useCreateOrdersMutation();
   const { cart } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
+
   const removeFromCartByIdSubmit = (id: any) => {
     dispatch(removeFromCartById({ id: id }));
   };
+  const handleIncrementQuantity = useCallback(
+    (id: any) => {
+      dispatch(incrementQuantity({ id }));
+    },
+    [dispatch]
+  );
 
   const { register, handleSubmit } = useForm();
 
@@ -32,13 +42,14 @@ const CartPage = () => {
         status: "pending",
       };
       createOrder(orderData);
+      dispatch(clearCart());
     } catch (error: any) {
       console.error("Error during registration:", error.message);
     }
   };
 
   return (
-    <div className="min-h-[90vh] h-[100%] pt-12 md:pt-24 lg:pt-24">
+    <div className="min-h-[90vh] h-[100%] pt-20 md:pt-24 lg:pt-24">
       <Container>
         {cart.length !== 0 && (
           <div className="grid grid-cols-1  lg:grid-cols-2 place-content-center gap-2">
@@ -54,7 +65,7 @@ const CartPage = () => {
                   cart.map((item: any, index: number) => (
                     <div
                       key={item.id}
-                      className="flex justify-start items-center gap-x-4"
+                      className="flex justify-between items-center gap-x-4"
                     >
                       <div className="hidden md:block lg:block">
                         <h4 className="text-semibold  text-xl">{index + 1}</h4>
@@ -76,14 +87,17 @@ const CartPage = () => {
                           {item.description.split(" ").slice(0, 6).join(" ")}
                         </p>
                       </div>
-                      <div className="flex justify-start items-center gap-1">
+                      <div className="flex justify-start items-center gap-x-3">
+                        <div onClick={() => handleIncrementQuantity(item.id)}>
+                          <CiCirclePlus className="h-8 w-8" />
+                        </div>
                         <div>
-                          <p className="text-base  font-semibold text-start">
+                          <p className="text-lg font-semibold text-start">
                             x{item.quantity}
                           </p>
                         </div>
                         <div onClick={() => removeFromCartByIdSubmit(item.id)}>
-                          <CiCircleMinus className="h-6 w-6" />
+                          <CiCircleMinus className="h-8 w-8" />
                         </div>
                       </div>
                       <div>
@@ -182,17 +196,20 @@ const CartPage = () => {
           </div>
         )}
         {cart.length === 0 && (
-          <>
-            <h4 className="text-4xl py-4">
-              "Your Cart Looks Empty , Get some products from"
+          <div className="flex flex-col items-center justify-center h-screen bg-gray-50">
+            <h4 className="text-4xl font-semibold text-gray-800 py-4">
+              Your Cart Looks Empty
             </h4>
+            <p className="text-lg text-gray-600 mb-6">
+              Discover amazing products at Z-Store
+            </p>
             <Link
               href="/men-clothing"
-              className="bg-white active:border-b-2 hover:border-red-900 font-bold border-2 border-red-800 border-b-4 rounded p-2"
+              className="bg-red-600 text-white hover:bg-red-700 transition duration-300 ease-in-out font-bold border-2 border-red-800 rounded-full px-6 py-3 shadow-lg transform hover:scale-105"
             >
-              Z-Store
+              Shop Now
             </Link>
-          </>
+          </div>
         )}
       </Container>
     </div>
