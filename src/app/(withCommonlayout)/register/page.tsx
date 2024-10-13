@@ -5,9 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { FieldValues, useForm } from "react-hook-form";
 import { useRegisterUserMutation } from "@/redux/feature/registerApi";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
 
 const RegisterPage = () => {
-  // const navigate = useNavigate();
+  const router = useRouter();
+  const { toast } = useToast();
   const [registration] = useRegisterUserMutation();
   const { register, handleSubmit } = useForm();
 
@@ -18,21 +21,29 @@ const RegisterPage = () => {
         email: formData.email,
         password: formData.password,
       };
-      console.log(registerData);
 
-      // Assuming registration is an asynchronous function that returns a promise
       const response: any = await registration(registerData);
 
-      // Check the response for success or handle accordingly
       if (response.data && response.data.success) {
-        // navigate("/login");dassaa
-        console.log("User registered successfully");
+        toast({
+          variant: "success",
+          title: "Yippie! Account has been registered.",
+          description: "Use Your Credentials To Login.",
+        });
+        router.push("/login");
       } else {
-        console.error("Registration failed:", response.data.message);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: response.data.message,
+        });
       }
     } catch (error: any) {
-      console.error("Error during registration:", error.message);
-      // Handle the error appropriately (e.g., show an error message to the user)
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: error.message,
+      });
     }
   };
   return (
