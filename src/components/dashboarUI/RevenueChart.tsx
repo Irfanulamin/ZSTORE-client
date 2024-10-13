@@ -17,71 +17,17 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { DollarSign, TrendingUp, TrendingDown } from "lucide-react";
 import { TOrder } from "@/types/producttypes";
-
-const mockOrders: TOrder = [
-  {
-    id: 1,
-    cart: [
-      { amount: 100, quantity: 2 },
-      { amount: 50, quantity: 1 },
-    ],
-  },
-  {
-    id: 2,
-    cart: [
-      { amount: 75, quantity: 3 },
-      { amount: 25, quantity: 2 },
-    ],
-  },
-  {
-    id: 3,
-    cart: [
-      { amount: 200, quantity: 1 },
-      { amount: 30, quantity: 4 },
-    ],
-  },
-  {
-    id: 4,
-    cart: [
-      { amount: 150, quantity: 2 },
-      { amount: 40, quantity: 3 },
-    ],
-  },
-  {
-    id: 5,
-    cart: [
-      { amount: 80, quantity: 5 },
-      { amount: 60, quantity: 1 },
-    ],
-  },
-];
-
-// Mock hook to simulate API call
-const useGetOrdersQuery = () => {
-  const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate API delay
-    const timer = setTimeout(() => {
-      setData(mockOrders);
-      setIsLoading(false);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  return { data, isLoading };
-};
+import { useGetOrdersQuery } from "@/redux/feature/orderPostApi";
 
 export default function RevenueChart() {
-  const { data, isLoading } = useGetOrdersQuery();
+  const { data, isLoading } = useGetOrdersQuery("");
   const [hoveredBar, setHoveredBar] = useState(null);
 
-  const chartData = data
+  const chartData = Array.isArray(data)
     ? data
-        .slice()
+        .slice() // Clone the array to prevent modifying the original array with reverse
         .reverse()
+        .slice(0, 5)
         .map((item, index) => ({
           order: `Order #${data.length - index}`,
           revenue: Number(
@@ -100,10 +46,6 @@ export default function RevenueChart() {
     .toFixed(2);
   const averageRevenue: string = (totalRevenue / chartData.length).toFixed(2);
   const lastOrderRevenue = chartData[chartData.length - 1]?.revenue || 0;
-  const revenueChange = (
-    ((lastOrderRevenue - averageRevenue) / averageRevenue) *
-    100
-  ).toFixed(2);
 
   if (isLoading) {
     return (
@@ -118,37 +60,36 @@ export default function RevenueChart() {
   }
 
   return (
-    <Card className="w-full max-w-3xl">
+    <Card className="w-full max-w-3xl md:max-w-2xl lg:max-w-xl h-full">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <div className="flex items-center space-x-2">
           <DollarSign className="h-6 w-6 text-primary" />
-          <CardTitle className="text-2xl font-bold">Revenue Insights</CardTitle>
+          <CardTitle className="text-base md:text-2xl font-bold">
+            Revenue Insights
+          </CardTitle>
         </div>
-        <Badge
-          variant={revenueChange >= 0 ? "success" : "destructive"}
-          className="text-sm"
-        >
-          {revenueChange >= 0 ? (
-            <TrendingUp className="mr-1 h-4 w-4" />
-          ) : (
-            <TrendingDown className="mr-1 h-4 w-4" />
-          )}
-          {Math.abs(revenueChange)}%
+        <Badge variant="destructive" className="text-xs md:text-sm">
+          <TrendingUp className="mr-1 h-4 w-4" />
+          15%
         </Badge>
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div>
-            <CardDescription className="text-sm font-medium">
+            <CardDescription className="text-xs md:text-sm font-medium">
               Total Revenue
             </CardDescription>
-            <p className="text-2xl font-bold">${totalRevenue}</p>
+            <p className="text-xs md:text-xl lg:text-2xl font-bold">
+              ${totalRevenue}
+            </p>
           </div>
           <div>
-            <CardDescription className="text-sm font-medium">
+            <CardDescription className="text-xs md:text-sm font-medium">
               Average Order Value
             </CardDescription>
-            <p className="text-2xl font-bold">${averageRevenue}</p>
+            <p className="text-xs md:text-xl lg:text-2xl font-bold">
+              ${averageRevenue}
+            </p>
           </div>
         </div>
         <ChartContainer
@@ -158,20 +99,20 @@ export default function RevenueChart() {
               color: "hsl(var(--primary))",
             },
           }}
-          className="h-[300px]"
+          className="h-[150px] md:h-[300px] lg:h-[300px] m"
         >
-          <ResponsiveContainer width="100%" height="100%">
+          <ResponsiveContainer>
             <BarChart data={chartData}>
               <XAxis
                 dataKey="order"
                 stroke="#888888"
-                fontSize={12}
+                fontSize={10}
                 tickLine={false}
                 axisLine={false}
               />
               <YAxis
                 stroke="#888888"
-                fontSize={12}
+                fontSize={10}
                 tickLine={false}
                 axisLine={false}
                 tickFormatter={(value) => `$${value}`}
@@ -180,10 +121,12 @@ export default function RevenueChart() {
                 dataKey="revenue"
                 fill="var(--color-revenue)"
                 radius={[4, 4, 0, 0]}
-                onMouseEnter={(data, index) => setHoveredBar(index)}
+                onMouseEnter={(data: any, index: number) =>
+                  setHoveredBar(index)
+                }
                 onMouseLeave={() => setHoveredBar(null)}
               >
-                {chartData.map((entry, index) => (
+                {chartData.map((entry: any, index: number) => (
                   <rect
                     key={`bar-${index}`}
                     fill={
@@ -202,7 +145,7 @@ export default function RevenueChart() {
                       <ChartTooltipContent
                         content={
                           <div className="flex flex-col">
-                            <span className="text-[0.70rem] uppercase text-muted-foreground">
+                            <span className="text-[0.65rem] uppercase text-muted-foreground">
                               {payload[0].payload.order}
                             </span>
                             <span className="font-bold text-primary">

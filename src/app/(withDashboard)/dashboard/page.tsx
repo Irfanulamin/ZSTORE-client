@@ -9,7 +9,7 @@ import React from "react";
 const DashboardPage = () => {
   return (
     <div className=" p-1 md:p-6 lg:p-12 ">
-      <div className="flex flex-col lg:flex-row gap-12 w-full justify-between items-center">
+      <div className="flex flex-col lg:flex-row gap-1 md:gap-6 lg:gap-12 w-full justify-between items-start lg:items-center">
         <div className="w-full lg:w-1/2">
           <RevenueChart />
         </div>

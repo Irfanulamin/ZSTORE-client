@@ -41,7 +41,7 @@ const OrderControlPanel = () => {
         data.slice().map((item: any, index: number) => (
           <div
             key={item._id}
-            className="p-6 gap-4 rounded-lg bg-[#f5f5dc] flex flex-row justify-between items-center shadow-md"
+            className="p-4 md:p-6 gap-4 rounded-lg bg-[#f5f5dc] flex flex-col md:flex-row justify-between items-center shadow-md"
           >
             <div className="hidden md:block">
               <h4 className="text-lg font-semibold text-[#b87333]">

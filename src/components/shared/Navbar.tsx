@@ -24,6 +24,7 @@ const Navbar = () => {
     "Flash-Sale",
     "About-Us",
     "Contact-Us",
+    "Review",
   ];
 
   const { cart } = useAppSelector((state) => state.cart);
@@ -75,6 +76,11 @@ const Navbar = () => {
             <NavbarItem>
               <Link className="text-black" href="/contact-us">
                 Contact us
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link className="text-black" href="/review">
+                Reviews
               </Link>
             </NavbarItem>
           </NavbarContent>

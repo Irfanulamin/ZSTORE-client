@@ -20,7 +20,7 @@ import {
 import Link from "next/link";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -156,14 +156,19 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className="flex h-screen bg-background">
-      <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
-        <SheetContent side="left" className="w-64 p-0">
-          <Sidebar />
-        </SheetContent>
-      </Sheet>
+      {/* Sidebar for large screens */}
       <div className="hidden lg:block">
         <Sidebar />
       </div>
+
+      {/* Mobile Sidebar */}
+      <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
+        <SheetContent side="left" className="w-64 p-0 lg:hidden">
+          <Sidebar />
+        </SheetContent>
+      </Sheet>
+
+      {/* Main Content Area */}
       <div className="flex flex-1 flex-col">
         <header className="flex h-14 items-center gap-4 border-b bg-background px-4 lg:h-[60px]">
           <Button

@@ -26,7 +26,7 @@ const AddToCart: React.FC<AddToCartProps> = ({ product }) => {
   };
 
   return (
-    <div className="py-8">
+    <div className="w-full">
       <button
         onClick={addToCartSubmit}
         className="rounded w-full py-4 bg-slate-600 text-base font-bold text-white border-slate-900 border-2 border-b-4 active:border-b-2 hover:border-slate-800"

@@ -40,6 +40,12 @@ const Footer = () => {
           >
             Customer Care
           </Link>
+          <Link
+            href="/review"
+            className="text-xs md:text-base lg:text-lg  py-2  lg:py-4 text-white"
+          >
+            Reviews
+          </Link>
         </div>
       </div>
       <hr className="" />

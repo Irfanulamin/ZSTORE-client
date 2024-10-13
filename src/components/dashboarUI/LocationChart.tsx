@@ -18,10 +18,10 @@ import { Badge } from "@/components/ui/badge";
 import { Globe } from "lucide-react";
 import { useGetOrdersQuery } from "@/redux/feature/orderPostApi";
 
-const COLORS = ["#1C1C1C", "#2F2F2F", "#6E6E6E", "#A8A8A8", "#D9D9D9"];
+const COLORS = ["#1C1C1C", "#2F2F2F", "#6E6E6E", "#A8A8A8", "#000000"];
 
 export default function LocationChart() {
-  const { data, isLoading, error } = useGetOrdersQuery("");
+  const { data, isLoading } = useGetOrdersQuery("");
 
   const processData = (rawData: any) => {
     if (!Array.isArray(rawData) || rawData.length === 0) {
@@ -73,23 +73,17 @@ export default function LocationChart() {
     );
   }
 
-  if (error) {
-    return (
-      <Card className="w-full max-w-md h-[400px] flex items-center justify-center">
-        <CardContent>
-          <p className="text-center text-red-500">
-            Error loading data. Please try again later.
-          </p>
-        </CardContent>
-      </Card>
-    );
-  }
-
   if (chartData.length === 0) {
     return (
-      <Card className="w-full max-w-md h-[400px] flex items-center justify-center">
+      <Card className="w-full max-w-md h-[400px] flex flex-col items-center justify-center">
         <CardContent>
-          <p className="text-center">No data available.</p>
+          <p className="text-center mb-4">No data available.</p>
+          <button
+            onClick={() => window.location.reload()} // Reloads the page
+            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
+          >
+            Reload
+          </button>
         </CardContent>
       </Card>
     );
@@ -100,7 +94,7 @@ export default function LocationChart() {
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <div className="flex items-center space-x-2">
           <Globe className="h-6 w-6 text-primary" />
-          <CardTitle className="text-2xl font-bold">
+          <CardTitle className="text-base md:text-xl lg:text-2xl font-bold">
             Revenue by Location
           </CardTitle>
         </div>
@@ -110,7 +104,7 @@ export default function LocationChart() {
       </CardHeader>
       <CardContent>
         <ChartContainer>
-          <ResponsiveContainer width="100%" height="100%">
+          {chartData && (
             <PieChart>
               <Pie
                 data={chartData}
@@ -160,7 +154,7 @@ export default function LocationChart() {
                 }}
               />
             </PieChart>
-          </ResponsiveContainer>
+          )}
         </ChartContainer>
         <div className="mt-4 grid grid-cols-2 gap-4">
           {chartData.map((item, index) => (
