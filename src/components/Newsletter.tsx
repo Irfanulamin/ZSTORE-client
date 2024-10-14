@@ -1,46 +1,47 @@
 import Image from "next/image";
-import React from "react";
-import Container from "./ui/Container";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
-const Newsletter = () => {
+export default function Newsletter() {
   return (
-    <Container>
-      <div className="flex justify-center items-center w-full rounded-md gap-12 border-0 md:border-2 lg:border-2 border-black">
-        <div className="w-full hidden md:block lg:block">
-          <Image
-            className="object-cover  rounded-l-md w-3/4"
-            src="/newsletter.jpg"
-            alt="Newsletter Image"
-            width={300}
-            height={300}
-          />
-        </div>
-
-        <div className="w-full pr-0 md:pr-12  lg:pr-24">
-          <div>
-            <h2 className="text-left md:text-right lg:text-right text-xl md:text-2xl lg:text-4xl font-bold ">
-              Subscribe to Our Newsletter
-            </h2>
-            <p className="text-left md:text-right lg:text-right text-sm md:text-base lg:text-base">
-              Subscribe now for the latest updates on our new arrivals in
-              clothes, watches, and menswear. Stay connected and be the first to
-              know about exclusive offers and trends! Join us today!
-            </p>
-          </div>
-          <div className="flex py-4">
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="px-1 md:px-4 lg:px-4 py-2 rounded-l-md focus:outline-black focus:ring-2 focus:ring-black focus:ring-opacity-50 flex-grow"
-            />
-            <button className=" transition-all px-2  md:px-3 lg:px-6 py-2 bg-black text-white rounded-r-md ml-2 hover:bg-white hover:text-black">
-              Subscribe
-            </button>
-          </div>
-        </div>
+    <div className="bg-gray-50 py-12 md:py-24">
+      <div className="container mx-auto px-4">
+        <Card className="overflow-hidden">
+          <CardContent className="p-0">
+            <div className="flex flex-col md:flex-row">
+              <div className="w-full md:w-1/2 relative h-64 md:h-auto">
+                <Image
+                  src="/newsletter.jpg"
+                  alt="Newsletter Image"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                  Stay in Style
+                </h2>
+                <p className="text-lg text-gray-600 mb-6">
+                  Subscribe to our newsletter for the latest updates on new
+                  arrivals, exclusive offers, and trending styles in men's
+                  fashion.
+                </p>
+                <form className="flex flex-col sm:flex-row gap-4">
+                  <Input
+                    type="email"
+                    placeholder="Your email address"
+                    className="flex-grow"
+                  />
+                  <Button type="submit" className="w-full sm:w-auto">
+                    Subscribe
+                  </Button>
+                </form>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
-    </Container>
+    </div>
   );
-};
-
-export default Newsletter;
+}

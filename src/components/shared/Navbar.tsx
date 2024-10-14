@@ -37,6 +37,7 @@ const Navbar = () => {
           onMenuOpenChange={setIsMenuOpen}
           maxWidth="2xl"
           shouldHideOnScroll
+          className="bg-slate-200"
         >
           <NavbarMenuToggle
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}

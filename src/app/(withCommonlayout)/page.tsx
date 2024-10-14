@@ -2,6 +2,7 @@ import Categories from "@/components/Categories";
 import FlashSale from "@/components/FlashSale";
 import MostPopular from "@/components/MostPopular";
 import Newsletter from "@/components/Newsletter";
+import ReviewSection from "@/components/ReviewSection";
 import TopProducts from "@/components/TopProducts";
 import Banner from "@/components/ui/Banner";
 
@@ -13,6 +14,7 @@ export default function Home() {
       <TopProducts />
       <Categories></Categories>
       <MostPopular></MostPopular>
+      <ReviewSection />
       <Newsletter />
     </>
   );

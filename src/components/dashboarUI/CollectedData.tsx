@@ -17,7 +17,7 @@ interface Order {
 }
 
 const CollectedData: React.FC = () => {
-  const { data } = useGetOrdersQuery<Order[]>("");
+  const { data } = useGetOrdersQuery<any>("");
 
   // Calculate gross sales and profit
   const grossSales = data

@@ -17,6 +17,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Globe } from "lucide-react";
 import { useGetOrdersQuery } from "@/redux/feature/orderPostApi";
+import { Tooltip } from "@nextui-org/react";
 
 const COLORS = ["#1C1C1C", "#2F2F2F", "#6E6E6E", "#A8A8A8", "#000000"];
 
@@ -103,7 +104,7 @@ export default function LocationChart() {
         </Badge>
       </CardHeader>
       <CardContent>
-        <ChartContainer>
+        <ChartContainer config={{}}>
           {chartData && (
             <PieChart>
               <Pie
@@ -129,7 +130,7 @@ export default function LocationChart() {
                   if (active && payload && payload.length) {
                     const data = payload[0].payload;
                     return (
-                      <ChartTooltipContent
+                      <Tooltip
                         content={
                           <div className="flex flex-col">
                             <span className="text-[0.70rem] uppercase text-muted-foreground">

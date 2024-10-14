@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import {
   Card,
@@ -9,19 +9,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart";
+import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
 import { Badge } from "@/components/ui/badge";
 import { DollarSign, TrendingUp, TrendingDown } from "lucide-react";
-import { TOrder } from "@/types/producttypes";
 import { useGetOrdersQuery } from "@/redux/feature/orderPostApi";
+import { Tooltip } from "@nextui-org/react";
 
 export default function RevenueChart() {
   const { data, isLoading } = useGetOrdersQuery("");
-  const [hoveredBar, setHoveredBar] = useState(null);
+  const [hoveredBar, setHoveredBar] = useState<number | null>(null);
 
   const chartData = Array.isArray(data)
     ? data
@@ -33,7 +29,8 @@ export default function RevenueChart() {
           revenue: Number(
             item.cart
               .reduce(
-                (acc, cartItem) => acc + cartItem.amount * cartItem.quantity,
+                (acc: any, cartItem: any) =>
+                  acc + cartItem.amount * cartItem.quantity,
                 0
               )
               .toFixed(2)
@@ -45,7 +42,6 @@ export default function RevenueChart() {
     .reduce((sum: any, item: any) => sum + item.revenue, 0)
     .toFixed(2);
   const averageRevenue: string = (totalRevenue / chartData.length).toFixed(2);
-  const lastOrderRevenue = chartData[chartData.length - 1]?.revenue || 0;
 
   if (isLoading) {
     return (
@@ -142,14 +138,17 @@ export default function RevenueChart() {
                 content={({ active, payload }) => {
                   if (active && payload && payload.length) {
                     return (
-                      <ChartTooltipContent
+                      <Tooltip
                         content={
                           <div className="flex flex-col">
                             <span className="text-[0.65rem] uppercase text-muted-foreground">
                               {payload[0].payload.order}
                             </span>
                             <span className="font-bold text-primary">
-                              ${payload[0].value.toFixed(2)}
+                              $
+                              {payload?.[0]?.value
+                                ? Number(payload[0].value).toFixed(2)
+                                : null}
                             </span>
                           </div>
                         }

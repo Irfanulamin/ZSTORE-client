@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { categories } from "@/util/categories";
 import Container from "@/components/ui/Container";
-// import { button } from "@nextui-org/react";
 
 const Categories = () => {
   return (

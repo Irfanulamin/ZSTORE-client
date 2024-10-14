@@ -71,7 +71,7 @@ const CartPage = () => {
                   <CgShoppingCart className="inline-block w-6 h-6 text-white" />
                 </h4>
               </div>
-              <div className="w-full flex flex-col gap-y-4 my-6 ">
+              <div className="w-full flex flex-col items-start gap-y-4 my-6 ">
                 {cart &&
                   cart.map((item: any, index: number) => (
                     <div

@@ -1,4 +1,4 @@
-import Carousel from "./Carousel";
+import Carousel from "../Carousel";
 import Container from "./Container";
 
 const Banner = async () => {
