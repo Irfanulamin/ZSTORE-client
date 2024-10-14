@@ -30,10 +30,7 @@ const OrderControlPanel = () => {
       const { data }: any = await updateMutation({
         id,
       });
-      console.log(data);
-    } catch (error) {
-      console.log("error");
-    }
+    } catch (error) {}
   };
   return (
     <div className="w-full flex flex-col gap-y-4 my-6  p-6">

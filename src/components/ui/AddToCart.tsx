@@ -1,9 +1,10 @@
 "use client";
 
+import { useToast } from "@/hooks/use-toast";
 import { addToCart } from "@/redux/feature/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { TProduct } from "@/types/producttypes";
-import React, { useCallback } from "react";
+import React from "react";
 import { IoCartSharp } from "react-icons/io5";
 
 type AddToCartProps = {
@@ -11,6 +12,7 @@ type AddToCartProps = {
 };
 
 const AddToCart: React.FC<AddToCartProps> = ({ product }) => {
+  const { toast } = useToast();
   const addToCartData: any = {
     id: product._id,
     amount: product.amount,
@@ -23,6 +25,11 @@ const AddToCart: React.FC<AddToCartProps> = ({ product }) => {
 
   const addToCartSubmit = () => {
     dispatch(addToCart(addToCartData));
+    toast({
+      variant: "success",
+      title: `${product.product_name}, has been added to your cart 😎✅`,
+      description: "Buy More! What are you waiting for?",
+    });
   };
 
   return (

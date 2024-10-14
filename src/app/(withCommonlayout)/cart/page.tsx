@@ -14,8 +14,10 @@ import { CgShoppingCart } from "react-icons/cg";
 import Link from "next/link";
 import { FieldValues, useForm } from "react-hook-form";
 import { useCreateOrdersMutation } from "@/redux/feature/orderPostApi";
+import { useToast } from "@/hooks/use-toast";
 
 const CartPage = () => {
+  const { toast } = useToast();
   const [createOrder] = useCreateOrdersMutation();
   const { cart } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
@@ -42,9 +44,18 @@ const CartPage = () => {
         status: "pending",
       };
       createOrder(orderData);
+      toast({
+        variant: "success",
+        title: `Your Payment has been succesful 😎✅`,
+        description: "Check Out! New things!",
+      });
       dispatch(clearCart());
     } catch (error: any) {
-      console.error("Error during registration:", error.message);
+      toast({
+        variant: "destructive",
+        title: `Uh Oh! Something went wrong`,
+        description: error.message,
+      });
     }
   };
 

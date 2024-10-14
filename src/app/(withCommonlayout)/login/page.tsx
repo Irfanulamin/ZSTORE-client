@@ -8,8 +8,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
+import { useToast } from "@/hooks/use-toast";
 
 const LoginPage = () => {
+  const { toast } = useToast();
   const router = useRouter();
   const [login] = useLoginUserMutation();
   const { register, handleSubmit } = useForm({
@@ -31,12 +33,24 @@ const LoginPage = () => {
 
       if (response.data && response.data.success) {
         dispatch(setUser(formData.email));
+        toast({
+          variant: "success",
+          title: "Yippie! Successfully Logged In 😎✅",
+        });
         router.push("/");
       } else {
-        console.error("Registration failed:", response.data.message);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: response.data.message,
+        });
       }
     } catch (error: any) {
-      console.error("Error during registration:", error.message);
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: error.message,
+      });
     }
   };
   return (

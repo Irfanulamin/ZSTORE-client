@@ -5,6 +5,7 @@ import { MdOutlineRateReview } from "react-icons/md";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -16,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@nextui-org/react";
 import { useCreateReviewsMutation } from "@/redux/feature/reviewApi";
+import { useToast } from "@/hooks/use-toast";
 
 interface AddReviewProps {
   product_name: string;
@@ -26,6 +28,7 @@ const AddReview: React.FC<AddReviewProps> = ({
   product_name,
   product_image,
 }) => {
+  const { toast } = useToast();
   const [createReview] = useCreateReviewsMutation();
   const { handleSubmit, register, reset } = useForm();
   const [rating, setRatingValue] = useState<number>();
@@ -39,6 +42,11 @@ const AddReview: React.FC<AddReviewProps> = ({
       product_name,
     });
     reset();
+    toast({
+      variant: "success",
+      title: `Your Review has been added 😎✅`,
+      description: "Check Out! Review Page to watch your comment!",
+    });
   };
 
   return (
@@ -53,10 +61,7 @@ const AddReview: React.FC<AddReviewProps> = ({
         <DialogContent className="sm:max-w-[425px]">
           <form onSubmit={handleSubmit(onSubmit)}>
             <DialogHeader>
-              <DialogTitle>Edit profile</DialogTitle>
-              <DialogDescription>
-                Make changes to your profile here. Click save when you're done.
-              </DialogDescription>
+              <DialogTitle>Review Here</DialogTitle>
             </DialogHeader>
             <div className="grid gap-4 py-4">
               <div className="grid grid-cols-4 items-center gap-4">
@@ -73,7 +78,7 @@ const AddReview: React.FC<AddReviewProps> = ({
 
               <div className="grid grid-cols-4 items-center gap-4">
                 <Label htmlFor="image" className="text-right">
-                  Image URL
+                  Your Image
                 </Label>
                 <Input
                   id="image"
@@ -113,7 +118,9 @@ const AddReview: React.FC<AddReviewProps> = ({
               </div>
             </div>
             <DialogFooter>
-              <Button type="submit">Save changes</Button>
+              <DialogClose asChild>
+                <Button type="submit">Save changes</Button>
+              </DialogClose>
             </DialogFooter>
           </form>
         </DialogContent>
