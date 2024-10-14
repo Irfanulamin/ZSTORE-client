@@ -51,11 +51,7 @@ const ReviewPage = () => {
                     <Image
                       width={40}
                       height={40}
-                      src={
-                        review.image
-                          ? review.image
-                          : "https://i.ibb.co.com/XWqvgyv/Minimalist-Avatar-Illustration.jpg"
-                      }
+                      src={review.image}
                       className="w-10 h-10 rounded-full border border-gray-300 object-cover"
                       alt="profile-pic"
                     />

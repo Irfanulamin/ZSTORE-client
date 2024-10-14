@@ -84,6 +84,7 @@ const AddReview: React.FC<AddReviewProps> = ({
                   id="image"
                   className="col-span-3  border border-black"
                   {...register("image", {
+                    required: true,
                     pattern: {
                       value: /^(https?:\/\/[^\s$.?#].[^\s]*)$/i,
                       message: "Please enter a valid URL",
