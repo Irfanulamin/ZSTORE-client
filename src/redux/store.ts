@@ -16,6 +16,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import authSlice from "./feature/authSlice";
 import { reviewApi } from "./feature/reviewApi";
+import { crudApi } from "./feature/crudApi";
 
 const persistConifg = {
   key: "auth",
@@ -31,6 +32,7 @@ export const store: any = configureStore({
     [registerApi.reducerPath]: registerApi.reducer,
     [loginApi.reducerPath]: loginApi.reducer,
     [reviewApi.reducerPath]: reviewApi.reducer,
+    [crudApi.reducerPath]: crudApi.reducer,
     auth: persistedAuthReducer,
   },
   middleware: (getDefaultMiddleware) =>
@@ -42,7 +44,8 @@ export const store: any = configureStore({
       registerApi.middleware,
       orderApi.middleware,
       loginApi.middleware,
-      reviewApi.middleware
+      reviewApi.middleware,
+      crudApi.middleware
     ),
 });
 

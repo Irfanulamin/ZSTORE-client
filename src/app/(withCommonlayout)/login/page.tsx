@@ -56,7 +56,7 @@ const LoginPage = () => {
   return (
     <div className="min-h-[90vh] h-[100%] pt-6 md:pt-24 lg:pt-36 bg-gradient-to-b from-gray-100 to-gray-200">
       <Container>
-        <div className="flex flex-col md:flex-row lg:flex-row justify-center items-center gap-8">
+        <div className="flex flex-col  lg:flex-row justify-center items-center gap-8">
           <div className="flex justify-center">
             <Image
               src="/login.png"
@@ -66,7 +66,7 @@ const LoginPage = () => {
               className="rounded-xl shadow-lg"
             />
           </div>
-          <div className="w-full md:w-1/2 lg:w-1/2 rounded-md p-8 bg-white shadow-lg">
+          <div className="w-full  lg:w-1/2 rounded-md p-8 bg-white shadow-lg">
             <div>
               <h2 className="text-left text-4xl py-4 lg:text-5xl font-bold text-slate-800">
                 Welcome Back!

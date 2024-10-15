@@ -41,14 +41,14 @@ const Navbar = () => {
         >
           <NavbarMenuToggle
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            className="sm:hidden"
+            className="block lg:hidden "
           />
           <NavbarBrand>
             <Link href="/" className="font-bold text-inherit">
               Z-Store
             </Link>
           </NavbarBrand>
-          <NavbarContent className="hidden sm:flex gap-4" justify="center">
+          <NavbarContent className="hidden lg:flex gap-4" justify="center">
             <NavbarItem>
               <Link className="text-black" href="/">
                 Home

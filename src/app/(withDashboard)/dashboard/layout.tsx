@@ -29,14 +29,19 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
   DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import ProtectedLayer from "@/util/ProtectedLayout";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { useGetInfoByEmailQuery } from "@/redux/feature/loginApi";
+import { logOut } from "@/redux/feature/authSlice";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const email = useAppSelector((state) => state.auth.email);
+  const { data } = useGetInfoByEmailQuery(email);
+  const dispatch = useAppDispatch();
 
   const Sidebar = () => (
     <div className="flex h-screen w-64 flex-col border-r bg-background">
@@ -68,16 +73,22 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
             </DropdownMenuTrigger>
             <DropdownMenuContent side="right" className="w-56">
               <DropdownMenuItem>
-                <Plus className="mr-2 h-4 w-4" />
-                <span>Create</span>
+                <Link href="/dashboard/crud/create-product">
+                  <Plus className="mr-2 h-4 w-4 inline-block" />
+                  <span>Create</span>
+                </Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <FileText className="mr-2 h-4 w-4" />
-                <span>Read</span>
+                <Link href="/dashboard/crud/read">
+                  <FileText className="mr-2 h-4 w-4 inline-block" />
+                  <span>Read</span>
+                </Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Edit className="mr-2 h-4 w-4" />
-                <span>Update</span>
+                <Link href="/dashboard/crud/update-product">
+                  <Edit className="mr-2 h-4 w-4 inline-block" />
+                  <span>Update</span>
+                </Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Trash2 className="mr-2 h-4 w-4" />
@@ -105,15 +116,10 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
             </DropdownMenuTrigger>
             <DropdownMenuContent side="right" className="w-56">
               <DropdownMenuSub>
-                <DropdownMenuSubTrigger>
+                <DropdownMenuItem>
                   <User className="mr-2 h-4 w-4" />
                   <span>Manage Roles</span>
-                </DropdownMenuSubTrigger>
-                <DropdownMenuSubContent>
-                  <DropdownMenuItem>Make Admin</DropdownMenuItem>
-                  <DropdownMenuItem>Make Super Admin</DropdownMenuItem>
-                  <DropdownMenuItem>Set as Customer</DropdownMenuItem>
-                </DropdownMenuSubContent>
+                </DropdownMenuItem>
               </DropdownMenuSub>
               <DropdownMenuItem>
                 <Users className="mr-2 h-4 w-4" />
@@ -128,26 +134,38 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="w-full justify-start">
               <Avatar className="h-8 w-8">
-                <AvatarImage src="/placeholder-user.jpg" alt="@johndoe" />
+                <AvatarImage
+                  src={data?.user.photo}
+                  alt={data?.user.name}
+                  className="object-cover w-8 h-8"
+                />
                 <AvatarFallback>JD</AvatarFallback>
               </Avatar>
-              <span className="ml-2">John Doe</span>
+              <span className="ml-2">{data?.user.name}</span>
               <ChevronDown className="ml-auto h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuItem>
+              <span className="font-semibold text-blue-700">
+                {data?.user?.email}
+              </span>
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <User className="mr-2 h-4 w-4" />
-              <span>Profile</span>
+              <span>{data?.user?.type}</span>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Settings className="mr-2 h-4 w-4" />
-              <span>Settings</span>
+              <Link href="/dashboard/profile">
+                <Settings className="mr-2 h-4 w-4 inline-block" />
+                <span>Settings</span>
+              </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Log out</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => dispatch(logOut())}>
+              <span className="text-red-500">Log out</span>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
@@ -155,40 +173,39 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   );
 
   return (
-    <div className="flex h-screen bg-background">
-      {/* Sidebar for large screens */}
-      <div className="hidden lg:block">
-        <Sidebar />
-      </div>
-
-      {/* Mobile Sidebar */}
-      <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
-        <SheetContent side="left" className="w-64 p-0 lg:hidden">
+    <ProtectedLayer>
+      <div className="flex h-screen bg-background">
+        <div className="hidden lg:block">
           <Sidebar />
-        </SheetContent>
-      </Sheet>
+        </div>
 
-      {/* Main Content Area */}
-      <div className="flex flex-1 flex-col">
-        <header className="flex h-14 items-center gap-4 border-b bg-background px-4 lg:h-[60px]">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="lg:hidden"
-            onClick={() => setIsSidebarOpen(true)}
-          >
-            <Menu className="h-6 w-6" />
-            <span className="sr-only">Toggle sidebar</span>
-          </Button>
-          <div className="flex-1" />
-          <Button variant="ghost" size="icon">
-            <Bell className="h-5 w-5" />
-            <span className="sr-only">Notifications</span>
-          </Button>
-        </header>
-        <main className="flex-1 overflow-y-auto p-4">{children}</main>
+        <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
+          <SheetContent side="left" className="w-64 p-0 lg:hidden">
+            <Sidebar />
+          </SheetContent>
+        </Sheet>
+
+        <div className="flex flex-1 flex-col">
+          <header className="flex h-14 items-center gap-4 border-b bg-background px-4 lg:h-[60px]">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="lg:hidden"
+              onClick={() => setIsSidebarOpen(true)}
+            >
+              <Menu className="h-6 w-6" />
+              <span className="sr-only">Toggle sidebar</span>
+            </Button>
+            <div className="flex-1" />
+            <Button variant="ghost" size="icon">
+              <Bell className="h-5 w-5" />
+              <span className="sr-only">Notifications</span>
+            </Button>
+          </header>
+          <main className="flex-1 overflow-y-auto p-4">{children}</main>
+        </div>
       </div>
-    </div>
+    </ProtectedLayer>
   );
 };
 

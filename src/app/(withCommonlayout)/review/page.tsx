@@ -32,7 +32,10 @@ const ReviewPage = () => {
         <div className="flex justify-center items-center flex-wrap gap-2">
           {data &&
             data.map((review: any, index: number) => (
-              <Card className="w-full max-w-[350px] bg-gradient-to-br from-amber-50 to-amber-100 shadow-lg rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+              <Card
+                key={index}
+                className="w-full max-w-[350px] bg-gradient-to-br from-amber-50 to-amber-100 shadow-lg rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              >
                 <CardHeader className="pb-2">
                   <CardTitle>
                     <div className="flex justify-between items-center">

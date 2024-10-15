@@ -5,7 +5,7 @@ export const orderApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://zstore-server.vercel.app/",
   }),
-  tagTypes: ["orders"],
+  tagTypes: ["crud"],
   endpoints: (builder) => ({
     getOrders: builder.query({
       query: () => ({
