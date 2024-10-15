@@ -91,8 +91,10 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Trash2 className="mr-2 h-4 w-4" />
-                <span>Delete</span>
+                <Link href="/dashboard/crud/delete-product">
+                  <Trash2 className="mr-2 h-4 w-4 inline-block" />
+                  <span>Delete</span>
+                </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

@@ -30,6 +30,13 @@ export const crudApi = createApi({
       }),
       invalidatesTags: ["crud"],
     }),
+    deleteProduct: builder.mutation({
+      query: (id) => ({
+        url: `delete-product/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["crud"],
+    }),
   }),
 });
 
@@ -37,6 +44,7 @@ export const {
   useCreateProductMutation,
   useGetProductQuery,
   useUpdateProductMutation,
+  useDeleteProductMutation,
 } = crudApi;
 
 export default crudApi.reducer;
