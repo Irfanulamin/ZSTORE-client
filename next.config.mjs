@@ -8,6 +8,10 @@ const nextConfig = {
       },
     ],
   },
+  webpack: (config) => {
+    config.resolve.modules.push(path.resolve(__dirname, "src"));
+    return config;
+  },
 };
 
 export default nextConfig;
