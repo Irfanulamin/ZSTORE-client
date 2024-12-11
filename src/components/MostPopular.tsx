@@ -5,7 +5,6 @@ import ProductCard from "./ui/ProductCard";
 
 import Link from "next/link";
 import { HeadingText } from "./ui/HeadingText";
-import { Button } from "./ui/button";
 import { Eye } from "lucide-react";
 
 const MostPopular = async () => {
@@ -31,9 +30,9 @@ const MostPopular = async () => {
         </div>
         <div>
           <Link href="\men-clothing">
-            <Button variant="default" className="text-white bg-black">
+            <button className="text-white bg-black">
               View All <Eye className="ml-2 inline-block h-6  w-6" />
-            </Button>
+            </button>
           </Link>
         </div>
       </Container>
