@@ -13,7 +13,7 @@ const Categories = () => {
           <HeadingText
             head="Top Categories"
             title="Discover your next favorite book from our collection of thrilling
-            adventures and heartwarming tales."
+            adventures and heartwarming tales!"
           />
           <div className="mt-10 flex flex-wrap items-center justify-start gap-6">
             {categories.map((category) => (
