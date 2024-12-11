@@ -16,10 +16,11 @@ const FlashSale = async () => {
       <Container>
         <div className="flex justify-between items-center">
           <div>
-            <h4 className="text-2xl font-bold space-x-6 text-left">
+            <h4 className="text-3xl font-bold space-x-6 text-left">
               Flash Sale
             </h4>
           </div>
+
           <div>
             <Link href="/flash-sale">View All</Link>
           </div>

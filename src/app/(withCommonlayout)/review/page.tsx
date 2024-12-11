@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useGetReviewsQuery } from "@/redux/feature/reviewApi";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import { HeadingText } from "@/components/ui/HeadingText";
 const ReviewPage = () => {
   const { data, isLoading } = useGetReviewsQuery("");
 
@@ -21,13 +22,11 @@ const ReviewPage = () => {
   return (
     <div className="py-24 min-h-[90vh] h-full">
       <Container>
-        <div className="flex flex-col items-center justify-center text-center p-6 bg-gray-100 rounded-lg shadow-md">
-          <h1 className="text-3xl font-bold mb-4 text-amber-600">Reviews</h1>
-          <p className="text-lg text-gray-700">
-            At Zstore, we prioritize your feedback because it shapes our journey
-            toward excellence.
-          </p>
-        </div>
+        <HeadingText
+          head="Reviews"
+          title="At Zstore, we prioritize your feedback because it shapes our journey
+            toward excellence."
+        />
 
         <div className="flex justify-center items-center flex-wrap gap-2">
           {data &&

@@ -5,17 +5,17 @@ import { Button } from "@/components/ui/button";
 
 export default function Newsletter() {
   return (
-    <div className="bg-gray-50 py-12 md:py-24">
+    <div className="bg-gray-50 py-12 md:py-24 ">
       <div className="container mx-auto px-4">
-        <Card className="overflow-hidden">
+        <Card className="">
           <CardContent className="p-0">
             <div className="flex flex-col md:flex-row">
-              <div className="w-full md:w-1/2 relative h-64 md:h-auto">
+              <div className="w-full md:w-1/2 relative h-96 ">
                 <Image
                   src="/newsletter.jpg"
                   alt="Newsletter Image"
                   fill
-                  className="object-cover"
+                  className="object-cover rounded-xl"
                 />
               </div>
               <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">

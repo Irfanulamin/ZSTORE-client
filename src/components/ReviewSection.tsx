@@ -13,6 +13,7 @@ import {
 import { useGetReviewsQuery } from "@/redux/feature/reviewApi";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import { HeadingText } from "./ui/HeadingText";
 
 export default function ReviewSection() {
   const { data } = useGetReviewsQuery("");
@@ -20,9 +21,10 @@ export default function ReviewSection() {
   return (
     <div className="py-12 bg-gradient-to-r from-amber-50 to-amber-100">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-amber-900 mb-8">
-          Customer Reviews
-        </h2>
+        <HeadingText
+          head="Customer Review"
+          title="We Truly Value Our Customers Your Satisfaction is Our Priority"
+        />
         {data && (
           <Carousel
             opts={{

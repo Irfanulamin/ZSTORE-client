@@ -24,17 +24,17 @@ const singleProductPage = async ({ params }: { params: { id: string } }) => {
 
   return (
     <>
-      <div className="min-h-[90vh] h-[100%] pt-6 md:pt-24 lg:pt-24">
+      <div className="min-h-[90vh] h-[100%] pt-12 md:pt-24 lg:pt-24">
         <Container>
-          <div className="w-full py-6 lg:py-12 flex flex-col md:flex-row lg:flex-row justify-between items-center gap-1 md:gap-6 lg:gap-24">
+          <div className="w-full py-6 lg:py-12 flex flex-col md:flex-row lg:flex-row justify-center items-center gap-1 md:gap-6 lg:gap-24">
             <Image
               src={product?.product_image}
               alt={product?.product_name}
               height={1500}
               width={1500}
-              className="w-full md:w-1/2 lg:w-1/2 h-[20rem] md:h-[40rem] lg:h-[40rem] object-cover border-2 border-black rounded-sm"
+              className=" h-[20rem] md:h-[30rem] lg:h-[30rem]  w-[20rem] md:w-[30rem] lg:w-[30rem] object-cover border-2 border-black rounded-sm"
             />
-            <div className="py-4">
+            <div className="py-4 ">
               <h1 className="text-xl md:text-3xl lg:text-5xl  font-bold space-x-12">
                 {product?.product_name}
               </h1>
@@ -81,7 +81,7 @@ const singleProductPage = async ({ params }: { params: { id: string } }) => {
                   </div>
                 </div>
               </div>
-              <div className="py-1 md:py-4 lg:py-8 flex justify-center items-center gap-1 w-full">
+              <div className="py-1 md:py-4 lg:py-8 flex justify-center items-center gap-1 w-full px-6">
                 <AddReview
                   product_image={product.product_image}
                   product_name={product.product_name}
@@ -111,7 +111,7 @@ const singleProductPage = async ({ params }: { params: { id: string } }) => {
             </div>
           </div>
           <div>
-            <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 md:gap-6 lg:gap-12">
+            <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-12">
               {products &&
                 products
                   .slice(0, 12)
