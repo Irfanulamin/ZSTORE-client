@@ -8,11 +8,11 @@ import {
 } from "@/redux/feature/loginApi";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FaUserCircle, FaEnvelope, FaUserTag, FaImage } from "react-icons/fa";
+import { Button } from "@/components/ui/button";
 
 export default function ProfilePage() {
   const email = useAppSelector((state) => state.auth.email);
