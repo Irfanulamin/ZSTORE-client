@@ -20,7 +20,7 @@ import {
 import Link from "next/link";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -36,6 +36,7 @@ import ProtectedLayer from "@/util/ProtectedLayout";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { useGetInfoByEmailQuery } from "@/redux/feature/loginApi";
 import { logOut } from "@/redux/feature/authSlice";
+import { Button } from "@/components/ui/button";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
