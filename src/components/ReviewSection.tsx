@@ -8,7 +8,11 @@ import { useGetReviewsQuery } from "@/redux/feature/reviewApi";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { HeadingText } from "./ui/HeadingText";
-import { CarouselContent, CarouselItem, Carousel } from "./ui/Carousel";
+import {
+  CarouselContent,
+  CarouselItem,
+  Carousel,
+} from "@/components/ui/Carousel";
 
 export default function ReviewSection() {
   const { data } = useGetReviewsQuery("");
