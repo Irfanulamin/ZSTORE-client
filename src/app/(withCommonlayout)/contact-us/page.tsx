@@ -3,7 +3,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -112,7 +111,7 @@ export default function ContactPage() {
                     </label>
                     <Textarea id="message" name="message" rows={4} required />
                   </div>
-                  <Button className="w-full">Send Message</Button>
+                  <button className="w-full">Send Message</button>
                 </form>
               </CardContent>
             </Card>

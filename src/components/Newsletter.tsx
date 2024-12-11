@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 
 export default function Newsletter() {
   return (
@@ -33,9 +32,9 @@ export default function Newsletter() {
                     placeholder="Your email address"
                     className="flex-grow"
                   />
-                  <Button type="submit" className="w-full sm:w-auto">
+                  <button type="submit" className="w-full sm:w-auto">
                     Subscribe
-                  </Button>
+                  </button>
                 </form>
               </div>
             </div>

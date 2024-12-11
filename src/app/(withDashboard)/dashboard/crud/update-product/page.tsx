@@ -23,7 +23,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -129,13 +128,9 @@ export default function UpdatePage() {
                   </span>
                 </TableCell>
                 <TableCell>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => openEditModal(product)}
-                  >
+                  <button onClick={() => openEditModal(product)}>
                     <Edit2 className="h-4 w-4" />
-                  </Button>
+                  </button>
                 </TableCell>
               </TableRow>
             ))}
@@ -268,25 +263,14 @@ export default function UpdatePage() {
                       required: "Keypoint is required",
                     })}
                   />
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => remove(index)}
-                  >
+                  <button type="button" onClick={() => remove(index)}>
                     <X className="h-4 w-4" />
-                  </Button>
+                  </button>
                 </div>
               ))}
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                className="mt-2"
-                onClick={() => append("")}
-              >
+              <button type="button" className="mt-2" onClick={() => append("")}>
                 Add Keypoint
-              </Button>
+              </button>
             </div>
             <div className="flex items-center space-x-2">
               <Controller
@@ -304,7 +288,7 @@ export default function UpdatePage() {
                 Flash Sale
               </label>
             </div>
-            <Button type="submit">Update Product</Button>
+            <button type="submit">Update Product</button>
           </form>
         </DialogContent>
       </Dialog>

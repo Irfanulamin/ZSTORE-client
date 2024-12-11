@@ -12,7 +12,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FaUserCircle, FaEnvelope, FaUserTag, FaImage } from "react-icons/fa";
-import { Button } from "@/components/ui/button";
 
 export default function ProfilePage() {
   const email = useAppSelector((state) => state.auth.email);
@@ -98,9 +97,9 @@ export default function ProfilePage() {
             />
           </div>
 
-          <Button type="submit" className="w-full">
+          <button type="submit" className="w-full">
             Update Profile
-          </Button>
+          </button>
         </form>
       </CardContent>
     </Card>

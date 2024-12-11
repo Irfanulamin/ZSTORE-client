@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { FaFacebook } from "react-icons/fa6";
 import {
   InstagramLogoIcon,
@@ -22,18 +21,18 @@ const Footer = () => {
               Your one-stop shop for trendy fashion and accessories.
             </p>
             <div className="flex space-x-4">
-              <Button variant="ghost" size="icon" aria-label="Facebook">
+              <button aria-label="Facebook">
                 <FaFacebook className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" aria-label="Twitter">
+              </button>
+              <button aria-label="Twitter">
                 <TwitterLogoIcon className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" aria-label="Instagram">
+              </button>
+              <button aria-label="Instagram">
                 <InstagramLogoIcon className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" aria-label="LinkedIn">
+              </button>
+              <button aria-label="LinkedIn">
                 <LinkedInLogoIcon className="h-5 w-5" />
-              </Button>
+              </button>
             </div>
           </div>
           <div>

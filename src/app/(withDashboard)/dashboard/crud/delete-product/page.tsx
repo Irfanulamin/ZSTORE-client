@@ -24,7 +24,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 
 const ReadPage = () => {
   const { data: products } = useGetProductQuery("");
@@ -96,7 +95,7 @@ const ReadPage = () => {
                   <TableCell>
                     <Dialog open={open} onOpenChange={setOpen}>
                       <DialogTrigger asChild>
-                        <Button variant="destructive">Delete Product</Button>
+                        <button>Delete Product</button>
                       </DialogTrigger>
                       <DialogContent className="sm:max-w-[425px]">
                         <DialogHeader>
@@ -107,18 +106,10 @@ const ReadPage = () => {
                           </DialogDescription>
                         </DialogHeader>
                         <DialogFooter>
-                          <Button
-                            variant="outline"
-                            onClick={() => setOpen(false)}
-                          >
-                            Cancel
-                          </Button>
-                          <Button
-                            variant="destructive"
-                            onClick={() => handleDelete(product._id)}
-                          >
+                          <button onClick={() => setOpen(false)}>Cancel</button>
+                          <button onClick={() => handleDelete(product._id)}>
                             Delete
-                          </Button>
+                          </button>
                         </DialogFooter>
                       </DialogContent>
                     </Dialog>

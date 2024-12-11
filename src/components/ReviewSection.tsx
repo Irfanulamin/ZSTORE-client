@@ -3,17 +3,13 @@
 import React from "react";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+
 import { useGetReviewsQuery } from "@/redux/feature/reviewApi";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { HeadingText } from "./ui/HeadingText";
+import { CarouselContent, CarouselItem,Carousel } from "./ui/Carousel";
+
 
 export default function ReviewSection() {
   const { data } = useGetReviewsQuery("");
@@ -85,7 +81,7 @@ export default function ReviewSection() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-          </Carousel>
+          </Carouse>
         )}
       </div>
     </div>

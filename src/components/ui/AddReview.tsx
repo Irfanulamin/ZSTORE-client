@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { MdOutlineRateReview } from "react-icons/md";
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -120,7 +119,7 @@ const AddReview: React.FC<AddReviewProps> = ({
             </div>
             <DialogFooter>
               <DialogClose asChild>
-                <Button type="submit">Save changes</Button>
+                <button type="submit">Save changes</button>
               </DialogClose>
             </DialogFooter>
           </form>
