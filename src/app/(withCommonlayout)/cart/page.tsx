@@ -5,16 +5,16 @@ import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import {
   incrementQuantity,
   removeFromCartById,
-  clearCart,
 } from "@/redux/feature/cartSlice";
 import Image from "next/image";
 import React, { useCallback } from "react";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { CgShoppingCart } from "react-icons/cg";
 import Link from "next/link";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useCreateOrdersMutation } from "@/redux/feature/orderPostApi";
 import { useToast } from "@/hooks/use-toast";
+import { loadStripe } from "@stripe/stripe-js";
 
 const CartPage = () => {
   const { toast } = useToast();
@@ -34,27 +34,35 @@ const CartPage = () => {
 
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = async (formData: FieldValues) => {
+  const onSubmit = async (formData: any) => {
     try {
-      const orderData = {
-        name: formData.name,
-        email: formData.email,
-        location: formData.location,
-        cart,
-        status: "pending",
-      };
-      createOrder(orderData);
-      toast({
-        variant: "success",
-        title: `Your Payment has been succesful 😎✅`,
-        description: "Check Out! New things!",
+      createOrder({ ...formData, cart, status: "pending" });
+
+      const stripe: any = await loadStripe(
+        "pk_test_51QV6vmIBh8sSKMjdgfu17w9e3iQDoYQpqTsgtSiFyWb4LyCR4gkD9cPxG5TfM4FOtkCSRReP8UKYB4DJBzThwaT1005BIybqGt"
+      );
+
+      const res = await fetch("http://localhost:5000/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(cart),
       });
-      dispatch(clearCart());
+
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+
+      const session = await res.json();
+
+      const result = await stripe.redirectToCheckout({ sessionId: session.id });
+
+      dispatch(cart);
     } catch (error: any) {
+      console.error("Error during checkout:", error);
       toast({
         variant: "destructive",
-        title: `Uh Oh! Something went wrong`,
-        description: error.message,
+        title: "Uh Oh! Something went wrong",
+        description: error.message || "Unknown error",
       });
     }
   };

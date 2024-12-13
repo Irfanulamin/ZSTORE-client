@@ -23,15 +23,15 @@ const MostPopular = async () => {
               demand, and satisfaction awaits with every purchase."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 py-12">
           {products.slice(0, 8).map((product: TProduct, index: number) => (
             <ProductCard key={index} product={product}></ProductCard>
           ))}
         </div>
         <div>
           <Link href="\men-clothing">
-            <button className="text-white bg-black">
-              View All <Eye className="ml-2 inline-block h-6  w-6" />
+            <button className="text-white bg-black px-4 py-2 rounded-lg text-base font-semibold">
+              View All
             </button>
           </Link>
         </div>

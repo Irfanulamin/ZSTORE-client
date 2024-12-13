@@ -23,11 +23,18 @@ const persistConifg = {
   storage,
 };
 
+const persistCartConfig = {
+  key: "cart",
+  storage,
+};
+
 const persistedAuthReducer = persistReducer(persistConifg, authSlice);
+
+const persistedCartReducer = persistReducer(persistCartConfig, cartSlice);
 
 export const store: any = configureStore({
   reducer: {
-    cart: cartSlice,
+    cart: persistedCartReducer,
     [orderApi.reducerPath]: orderApi.reducer,
     [registerApi.reducerPath]: registerApi.reducer,
     [loginApi.reducerPath]: loginApi.reducer,

@@ -15,14 +15,14 @@ const Categories = () => {
             title="Discover your next favorite book from our collection of thrilling
             adventures and heartwarming tales!"
           />
-          <div className="mt-10 flex flex-wrap items-center justify-start gap-6">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
             {categories.map((category) => (
               <Link
                 key={category.name}
                 href={`/men-clothing?category=${category.name}`}
                 className="group"
               >
-                <div className="relative w-96 h-96 rounded-lg overflow-hidden shadow-md transition-transform duration-300 group-hover:scale-105">
+                <div className="relative w-44 h-44 md:w-64 md:h-64 xl:w-96 xl:h-96 rounded-lg overflow-hidden shadow-md transition-transform duration-300 group-hover:scale-105">
                   <Image
                     src={category.image}
                     alt={category.name}
@@ -31,7 +31,7 @@ const Categories = () => {
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-75" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <p className="text-white text-3xl font-semibold transition-all duration-300 group-hover:scale-110 group-hover:text-shadow uppercase">
+                    <p className="text-white text-base md:text-xl xl:text-3xl font-semibold transition-all duration-300 group-hover:scale-110 group-hover:text-shadow uppercase">
                       {category.name}
                     </p>
                   </div>

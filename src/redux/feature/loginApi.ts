@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const loginApi = createApi({
   reducerPath: "loginApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://zstore-server.vercel.app/",
+    baseUrl: "http://localhost:5000/",
   }),
   tagTypes: ["auth", "user"], // Specify the tag types
   endpoints: (builder) => ({

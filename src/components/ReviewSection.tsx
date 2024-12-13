@@ -34,7 +34,7 @@ export default function ReviewSection() {
           >
             <CarouselContent>
               {data.slice(0, 6).map((review: any, index: number) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className="md:basis-1/2 xl:basis-1/3">
                   <div className="p-1">
                     <Card className="bg-white shadow-lg rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl w-96 h-64">
                       <CardHeader className="pb-2">

@@ -111,7 +111,9 @@ export default function ContactPage() {
                     </label>
                     <Textarea id="message" name="message" rows={4} required />
                   </div>
-                  <button className="w-full">Send Message</button>
+                  <button className="w-full bg-black text-white font-medium py-4 rounded-lg">
+                    Send Message
+                  </button>
                 </form>
               </CardContent>
             </Card>

@@ -97,7 +97,10 @@ export default function ProfilePage() {
             />
           </div>
 
-          <button type="submit" className="w-full">
+          <button
+            type="submit"
+            className="w-full bg-black text-white font-semibold py-4 rounded"
+          >
             Update Profile
           </button>
         </form>

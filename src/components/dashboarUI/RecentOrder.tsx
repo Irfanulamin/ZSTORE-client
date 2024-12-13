@@ -43,8 +43,6 @@ const RecentOrder = () => {
                     className="w-12 h-12"
                   />
                 </div>
-
-                {/* Order Info */}
                 <div className="flex flex-col md:justify-between md:flex-row">
                   <div className="flex flex-col gap-1">
                     <p className="text-lg font-bold text-[#b87333]">
@@ -54,17 +52,15 @@ const RecentOrder = () => {
                       {item.email}
                     </p>
                   </div>
+                </div>
 
+                <div className="flex  items-center gap-3">
                   <div className="flex items-center gap-2 mt-2 md:mt-0">
-                    <MapPin className="w-4 h-4 text-red-500" />
-                    <p className="text-xs font-semibold text-[#555555]">
+                    <MapPin className="w-6 h-6 text-red-500" />
+                    <p className="text-base font-semibold text-[#555555]">
                       {item.location}
                     </p>
                   </div>
-                </div>
-
-                {/* Dropdown and Total Price */}
-                <div className="flex flex-col items-end gap-3">
                   <Dropdown>
                     <DropdownTrigger>
                       <Button

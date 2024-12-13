@@ -24,7 +24,7 @@ const TopProducts = async () => {
       </div>
       <div className="bg_topproducts ">
         <Container>
-          <div className="py-12 grid grid-cols-2 lg:grid-cols-4 gap-1 md:gap-6 lg:gap-12">
+          <div className="py-12 grid grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-12 place-content-center place-items-center">
             {products.slice(0, 8).map((product: TProduct, index: number) => (
               <SingleTopProduct
                 key={index}

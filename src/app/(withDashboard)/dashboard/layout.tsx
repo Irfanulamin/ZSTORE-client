@@ -4,6 +4,7 @@ import { useState } from "react";
 import {
   Bell,
   ChevronDown,
+  ChevronUp,
   ClipboardList,
   Edit,
   FileText,
@@ -63,9 +64,13 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className="w-full justify-start space-x-2 px-3 py-2">
-                <FileText className="h-4 w-4" />
-                <span>CRUD</span>
-                <ChevronDown className="ml-auto h-4 w-4" />
+                <div className="flex items-center justify-center">
+                  <FileText className="h-4 w-4" />
+                  <span className="inline-block text-sm ml-2 font-semibold">
+                    CRUD
+                  </span>
+                  <ChevronDown className="ml-auto h-4 w-4" />
+                </div>
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent side="right" className="w-56">
@@ -105,9 +110,13 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className="w-full justify-start space-x-2 px-3 py-2">
-                <Users className="h-4 w-4" />
-                <span>Super Admin</span>
-                <ChevronDown className="ml-auto h-4 w-4" />
+                <div className="flex items-center justify-center">
+                  <Users className="h-4 w-4" />
+                  <span className="inline-block text-sm ml-2 font-semibold">
+                    Super Admin
+                  </span>
+                  <ChevronDown className="ml-auto h-4 w-4" />
+                </div>
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent side="right" className="w-56">
@@ -128,18 +137,19 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="border-t p-4">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <button className="w-full justify-start">
+            <div className="flex items-center justify-center">
               <Avatar className="h-8 w-8">
                 <AvatarImage
                   src={data?.user.photo}
                   alt={data?.user.name}
                   className="object-cover w-8 h-8"
                 />
-                <AvatarFallback>JD</AvatarFallback>
               </Avatar>
-              <span className="ml-2">{data?.user.name}</span>
-              <ChevronDown className="ml-auto h-4 w-4" />
-            </button>
+              <span className="inline-block text-sm ml-2 font-semibold">
+                {data?.user.name}
+              </span>
+              <ChevronUp className="ml-auto h-4 w-4" />
+            </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
             <DropdownMenuItem>

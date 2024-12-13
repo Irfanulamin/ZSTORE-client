@@ -18,10 +18,10 @@ const SingleTopProduct = ({ product }: { product: TProduct }) => {
           <div className="absolute inset-0 bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-          <p className="text-white text-4xl font-semibold uppercase">
+          <p className="text-white text-xl md:text-2xl lg:text-4xl font-semibold uppercase">
             {product?.category}
           </p>
-          <p className="text-gray-400 text-sm font-semibold">
+          <p className="text-gray-400 hidden md:block lg:block text-sm font-semibold">
             {product?.description}
           </p>
         </div>

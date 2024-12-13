@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const crudApi = createApi({
   reducerPath: "crudApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://zstore-server.vercel.app/",
+    baseUrl: "http://localhost:5000/",
   }),
   tagTypes: ["crud"],
   endpoints: (builder) => ({
