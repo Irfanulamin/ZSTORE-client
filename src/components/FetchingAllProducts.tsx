@@ -40,7 +40,7 @@ const FetchedProducts = async ({
     }
 
     return (
-      <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 md:gap-6 lg:gap-12">
+      <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1 md:gap-6 lg:gap-12">
         {products.length > 0 ? (
           products.map((product: TProduct, index: number) => (
             <ProductCard product={product} key={index} />
