@@ -42,7 +42,7 @@ const CartPage = () => {
         "pk_test_51QV6vmIBh8sSKMjdgfu17w9e3iQDoYQpqTsgtSiFyWb4LyCR4gkD9cPxG5TfM4FOtkCSRReP8UKYB4DJBzThwaT1005BIybqGt"
       );
 
-      const res = await fetch("http://localhost:5000/checkout", {
+      const res = await fetch("https://zstore-server.vercel.app/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(cart),
